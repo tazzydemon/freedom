@@ -2,7 +2,13 @@
     "name": "tazzydemon/freedom",
     "description": "Freedom Installer",
     "require": {
-        "mnsami/composer-custom-directory-installer": "1.0.*"
+        "mnsami/composer-custom-directory-installer": "1.0.*",
+        "silverstripe/cms": "~3.2",
+        "silverstripe/framework": "~3.2",
+        "silverstripe/reports": "~3.2",
+        "silverstripe/siteconfig": "~3.2",
+        "silverstripe/userforms": "~2",
+        "undefinedoffset/sortablegridfield": "dev-master"
     },
     "authors": [
         {
@@ -11,9 +17,5 @@
         }
     ],
     "minimum-stability": "dev",
-    "extra": {
-        "installer-paths": {
-            "./jjj/": ["tazzydemon/freedom"]
-        }
-    }
+    "target-dir": "./"
 }
