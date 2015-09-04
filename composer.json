@@ -15,5 +15,8 @@
             "email": "julian.warren@pulseenergy.co.nz"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "vendor-dir": ""
+    }
 }
