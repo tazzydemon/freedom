@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "extra": {
         "installer-paths": {
-            "./": ["tazzydemon/freedom", "vendor/package"]
+            "./jjj/": ["tazzydemon/freedom"]
         }
     }
 }
