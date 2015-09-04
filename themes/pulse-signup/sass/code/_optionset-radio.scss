@@ -1,0 +1,278 @@
+/* Testing styles */
+// See line 258 for bodge to hide day/night
+
+$radio-border-color: #ddd;
+$radio-gutter: 35px;
+$radio-pos-top: 7px;
+$radio-pos-left: 8px;
+$radio-fixed-width: 211px;
+//add 10px up from the design
+
+// fixed width LARGE
+$radio-fixed-width-large: 300px;
+$radio-gutter-large: 35px;
+$radio-pos-top-large: 13px;
+$radio-pos-left-large: 11px;
+
+@if $breakpoint == small {
+  //Radio Buttons (optionset)
+  div.optionset {
+    width: 100%;
+    height: auto;
+    // float: left;
+    clear: both;
+
+    ul {
+      width: 100%;
+      height: auto;
+      float: left;
+      }
+
+    ul#Form_SignUpForm_SmoothPayFrequency li {
+      width: 187px;
+      }
+    ul#Form_SignUpForm_PricePlan li {
+      width: 350px;
+      }
+
+    li {
+      position: relative;
+      border-left: $radio-gutter solid transparent;
+      position: relative;
+      float: left;
+      margin-right: 10px;
+      min-width: 56px;
+      }
+
+    input {
+      //@opacity
+      position: absolute;
+      top: 0;
+      left: -$radio-gutter;
+      right: 0;
+      bottom: 0;
+      }
+    ul label {
+      width: 100%;
+      height: auto;
+      float: left;
+      clear: both;
+      }
+    input.radio:checked ~ label .radioWrapper {
+      border: 1px solid $radio-border-color;
+
+      .application & {
+        background: #fff;
+        }
+      }
+    .radioWrapper {
+      border: 1px solid transparent;
+      display: block;
+      padding-top: 0;
+      padding-left: $radio-gutter; //this makes sure there is no 'hover' gap between the label and the sprite
+      padding-bottom: 6px;
+      margin-left: -$radio-gutter;
+      @include clearfix;
+      cursor: pointer;
+      //@border-radius;
+      //@border-box;
+
+      @if $touch == false {
+        &:hover {
+          border: 1px solid $radio-border-color;
+          }
+        &:active {
+          border: 1px solid $radio-border-color;
+          }
+        } @else {
+        &:active {
+          border: 1px solid $radio-border-color;
+          }
+        }
+      }
+
+    .labelStrong {
+      padding-right: 5px;
+      //@border-box
+      }
+    .labelStd {
+      padding-top: $radio-pos-top - 1;
+      padding-right: 10px;
+      display: block;
+      }
+
+    .rb, .cb {
+      left: -$radio-gutter + $radio-pos-left;
+      top: $radio-pos-top;
+      position: absolute;
+      display: block;
+      //@sprites
+      }
+
+    // widthFixed
+    &.widthFlexi,
+    &.widthFixedSmall {
+      .radioWrapper {
+        padding-top: 3px;
+        padding-bottom: 3px;
+
+        .labelStd,
+        .labelStrong {
+          padding-bottom: 6px;
+          }
+        }
+      li {
+        width: $radio-fixed-width - $radio-gutter;
+        margin-right: 20px;
+        }
+      .rb {
+        top: $radio-pos-top + 3px;
+        }
+      }
+    &.widthFixedSmall ul {
+      max-width: 700px;
+      }
+    &.widthFixedLarge li {
+      width: $radio-fixed-width-large - $radio-gutter-large;
+      border-left: $radio-gutter-large solid transparent;
+
+      label {
+        padding-right: 20px;
+
+        .note {
+          margin-left: -$radio-gutter-large + 5px;
+          padding-right: 0;
+          margin-top: 7px;
+          }
+        }
+      .textLink {
+        margin-left: -30px;
+        margin-bottom: 15px;
+        margin-top: 12px;
+        display: inline-block;
+        }
+      .radioWrapper:active,
+      input.radio:checked ~ label .radioWrapper {
+        background: #fff;
+        border: 1px solid #ddd;
+        }
+      .radioWrapper, .checkboxWrapper {
+        padding-bottom: 8px;
+        background: url(../images/fallback-images/trans-white50.png);
+        background: rgba(#fff, 0.5);
+        border: 1px solid #E3E5E7;
+        }
+      .labelStrong,
+      .labelStd {
+        padding-top: 0;
+        margin-top: 8px;
+        float: left;
+        width: 100%;
+
+        + .labelStd {
+          margin-top: 2px;
+          }
+        }
+      .labelStrong + span {
+        margin-top: 4px;
+        }
+
+      .rb, .cb {
+        left: -$radio-gutter-large + $radio-pos-left-large;
+        top: $radio-pos-top-large;
+        }
+      .tag {
+        // margin-top: 7px !important;
+        }
+      }
+
+    // widthFlexi
+    &.widthFlexi li {
+      width: auto;
+
+      label {
+        width: auto;
+        }
+
+      }
+
+    .tag {
+      padding: 1px 4px 2px;
+      float: left;
+      margin-right: 4px;
+      //@border-radius
+
+      &.blue {
+        background: #2BA5D7;
+        }
+
+      &.green {
+        background: #647866;
+        }
+      }
+    }
+
+  .tagsInline {
+    .labelStrong {
+      float: left;
+      width: auto !important;
+      }
+    .labelStd {
+      width: 100%;
+      }
+    .tag {
+      clear: none;
+      margin-top: 13px !important;
+      margin-bottom: 3px;
+
+      + .tag {
+        clear: none;
+        }
+      &:last-child {
+        margin-right: 11px;
+        }
+      }
+    }
+  .tagsClear .tag {
+    margin-top: 7px;
+    }
+  .note {
+    clear: both;
+    float: left;
+    margin-top: 10px;
+    }
+
+  .advoptionset > div.middleColumn {
+    @include clearfix;
+    }
+
+//  Break Point for phones and small tablets
+  @include media(3, max) {
+    div.optionset ul#Form_SignUpForm_PricePlan li {
+      width: 100%;
+      }
+    }
+
+
+
+
+// suspended hide of day night
+//  // bodge to partially hide the day/night option
+//  UL#Form_SignUpForm_PricePlan .valDay_Night .radioWrapper {
+//    opacity: 0.3;
+//    background-color: #aaaaaa;
+//    .rb{
+//      display:none;
+//      }
+//    }
+//  input#Form_SignUpForm_PricePlan_DayNight {
+//   display: none; // just hide the hidden checkbox from being accidentally clicked
+//  }
+
+  }
+// end breakpoint small ====================
+
+@if $breakpoint == large {
+  /* forms large */
+  }
+// end breakpoint large ====================t large ====================

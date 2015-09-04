@@ -1,0 +1,150 @@
+
+
+// checkbox and radio button
+$radio-gutter: 		35px;
+
+
+@if $breakpoint == small {
+
+// select {
+//     display: block !important;
+// }
+
+/* formPage ================================= */
+
+
+    .ddl{
+        position: relative;
+        font-family: Arial, sans-serif;
+        background:		#fff;
+        //@border-box;
+        //@border-radius(5px);
+        padding:        10px;
+        padding-left:   5px;
+        padding-top:    8px;
+        border:         1px solid #C0C0C0;
+        // border:         1px solid red;
+        text-indent:	4px;
+        width:			320px;
+        // width:          100%;
+        float: 			left;
+        clear:			none !important;
+        /*width:	314px;*/
+        // height:	36px;
+        margin:			0;
+        // margin-top:		9px;
+        font-size:		14px;
+        color:			#333;
+        font-weight:	100;
+        text-indent:	4px;
+        // z-index: 1;
+
+        &:active{
+            border:	1px solid #999999;
+        }
+
+        .ddl-arrow {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+
+    .ac_results{
+        border:	1px solid #CCCCCC;
+        // border: 1px solid blue;
+        border-top: none;
+        margin-bottom: -5px;
+        overflow-x:hidden;
+        // z-index: 1;
+        background:#FFF;
+        z-index:999;
+
+
+        ul{
+
+            max-height:160px;
+            overflow-y:scroll;
+            overflow-x:hidden;
+            margin-top: 0;
+            width: 130%;
+
+            li{
+                font-size:		14px;
+                color:			black;
+                font-weight:	100;
+                text-indent:	5px;
+                padding:		8px 7px;
+                border-bottom:  1px solid #DDD;
+
+                @if $touch == false {
+
+                    &:hover{
+                        background: #EEEEEE;
+                        cursor: pointer;
+                    }
+                     &:active{
+                        background: #EEEEEE;
+                    }
+                }@else {
+                     &:active{
+                        background:#EEEEEE;
+                    }
+                }
+            }
+			li[data-val=placeholder]{
+				display: none;
+			}
+
+
+            .disabled-select {
+                color: #999;
+                @if $touch == false {
+                    &:hover{
+                        background: none;
+                        cursor: auto;
+                    }
+
+                }
+            }
+        }
+
+        .scroll {
+            background: #BBBBBB;
+            width: 6px;
+            position: absolute;
+            top: 8px;
+            right: 14px;
+            bottom: 8px;
+            display: block;
+
+            .bar {
+                width: 6px;
+            }
+
+            &.no-scroll {
+                display: none;
+            }
+        }
+    }
+
+	@include media(2, max){
+		.ddl{
+			width: 100%;
+			margin:	0;
+			margin-top: 5px;
+		}
+		.textFieldsOnly .dropdown + .dropdown{
+			margin-top:	15px;
+		}
+	}
+
+
+} // end breakpoint small ====================
+
+@if $breakpoint == large {
+/* forms large */
+
+
+} // end breakpoint large ====================t large ====================

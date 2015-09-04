@@ -1,0 +1,15 @@
+@import "code/functions/_retina-sprites.scss";
+
+$breakpoint:	small;
+$version: 		0;
+$vendor :       no-prefix;
+$retina:        true;
+
+
+@import "code/_sprites"; 
+
+
+// media query now in the link tag
+// @media only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx){
+//    @import "code/_sprites"; 
+// }

@@ -1,0 +1,1142 @@
+// Original Pulse Variable Section
+
+$pulse-green: #57a946;
+//$pulse-grey-green:#6e8574;
+$pulse-lime-green: #95c224;
+$pulse-grey-green: #6e8574;
+$pulse-warm-grey: #c2c4ba;
+$pulse-cool-grey: #dde2e0;
+$pulse-green-tint: #cbdfbe;
+
+$greypower-emerald-green: #007176;
+$greypower-yellow: #ffcc00;
+$completed-hover: lighten($pulse-green, 45%);
+//dcf0d8;
+
+// end  Original Pulse Variable Section
+$bg-color: #eaedf1;
+
+// Show/hide toggle for dev purposes
+
+// $devDisplay: block;
+$devDisplay: none;
+// .optionset input.radio {
+//     opacity: 1 !important;
+// }
+
+// select {
+//     display: block !important;
+// }
+
+@if $breakpoint == small {
+  /* content small */
+
+  #SignUpForm {
+    margin-bottom: 50px;
+    }
+
+  body {
+    background-color: $bg-color;
+    background-image: url(../images/korubg.png);
+    background-repeat: no-repeat;
+    background-position: 0px 250px;
+    //border-box
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    }
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    }
+  .section {
+    position: relative;
+    float: left;
+    width: 100%;
+
+    //background: #F5F6F8;
+
+    hr {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      width: 100%;
+
+      + hr {
+        top: auto;
+        bottom: 0;
+        }
+      }
+    + .section {
+      hr {
+        display: none;
+        + hr {
+          display: block;
+          }
+        }
+      }
+    }
+  .block {
+    //border-box
+    border-left: 20px solid transparent;
+    border-right: 10px solid transparent; //border-right is smaller
+    @include clearfix;
+    }
+
+  // HEADING MARGIN =================================================
+  .field > label {
+    margin-bottom: 18px;
+    display: block;
+    float: left;
+    clear: both;
+    width: 100%;
+    }
+
+  .subBlock {
+    display: $devDisplay; //default = none;
+    margin: 0 0 10px;
+    background: #DEE3E1;
+    }
+
+  .notFound {
+    display: $devDisplay;
+    }
+
+  .summaryBlock + .note {
+    padding-top: 15px
+    }
+
+  .cta1 {
+    // background:     none !important;
+    //background: rgba(255,255,255,.3) !important;
+    @include clearfix;
+    .block {
+      border: 1px dotted #3ea929;
+      background: rgba(255, 255, 255, .3) !important;
+      //  background:         #528537;    //dark green;
+      // padding-right: 3px;
+      // padding-bottom: 3px;
+      float: left;
+      width: 100%;
+      padding: 15px 12px;
+      @include border-radius(8px);
+
+      > div {
+        //   background:         #76BF4F;    //light-green
+        float: left;
+        width: 100%;
+        padding-left: 14px;
+        padding-right: 14px;
+        //multi-border-radius
+        //@border-box
+
+        > div {
+          padding-top: 17px;
+          padding-bottom: 19px;
+
+          > div {
+            margin-bottom: 10px;
+
+            > p {
+              margin: 0px 10px 4px 0;
+              }
+
+            &:last-child {
+              margin-bottom: 0;
+              }
+            }
+
+          > ul.ctaList {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            }
+
+          }
+        }
+      }
+
+    .withExtraText .ctaBold {
+      display: block;
+      }
+
+    a {
+      margin: 9px;
+      margin-left: 0;
+      }
+    }
+
+  .block > .cta1, {
+    padding: 30px 0;
+    margin: -24px -10px 24px -20px;
+    }
+
+  .block > .cta1 + .cta1 {
+    padding: 0;
+    }
+
+  .block > .cta1, .block > .cta2, {
+    padding: 30px 0;
+    margin: -24px -10px 24px -20px;
+    }
+
+  .block > .cta3 {
+    padding: 30px 0px 0px 0px;
+    margin: -24px -10px 24px -20px;
+    border-bottom: 1px dotted #3eae29;
+    }
+
+  .block > .cta1 + .cta1, .block > .cta2 + .cta2, .block > .cta3 + .cta3 {
+    padding: 0;
+    }
+
+  .ctaIndent {
+    padding-left: 70px !important;
+    width: 100% !important;
+    }
+
+  .cta2 {
+    // background:     none !important;
+    //background: #eaedf1 !important;
+    @include clearfix;
+    .block {
+      border: 1px solid #c8dfc9;
+      background: #c8dfc9 !important;
+      //  background:         #528537;    //dark green;
+      // padding-right: 3px;
+      // padding-bottom: 3px;
+      float: left;
+      width: 100%;
+      @include border-radius(8px);
+      //multi-border-radius
+
+      > div {
+        // background: #76BF4F; //light-green
+        float: left;
+        width: 100%;
+        padding-left: 14px;
+        padding-right: 14px;
+        //multi-border-radius
+        //@border-box
+
+        > div {
+          padding-top: 17px;
+          padding-bottom: 19px;
+
+          > div {
+            margin-bottom: 10px;
+
+            > p {
+              margin: 0px 10px 4px 0;
+              }
+
+            &:last-child {
+              margin-bottom: 0;
+              }
+            }
+
+          > ul.ctaList {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            }
+
+          }
+        }
+      }
+
+    .withExtraText .ctaBold {
+      display: block;
+      }
+    .note {
+      margin-top: 5px;
+      color: #fff;
+      }
+
+    a {
+      margin: 9px;
+      margin-left: 0;
+      }
+    }
+
+  .cta3 {
+    // background:     none !important;
+    //background: #eaedf1 !important;
+    @include clearfix;
+    .block {
+      // border: 1px solid #c8dfc9;
+      // background: #c8dfc9 !important;
+      //  background:         #528537;    //dark green;
+      // padding-right: 3px;
+      //padding-bottom: 3px;
+      float: left;
+      width: 100%;
+      //@include border-radius(8px);
+      //multi-border-radius
+
+      > div {
+        //background: #76BF4F; //light-green
+        float: left;
+        width: 100%;
+        //padding-left: 14px;
+        //padding-right: 14px;
+        //multi-border-radius
+        //@border-box
+
+        > div {
+          //padding-top: 17px;
+          //padding-bottom: 19px;
+          margin-bottom: 10px;
+
+          > p {
+            margin: 0px 10px 4px 0;
+            }
+
+          &:last-child {
+            margin-bottom: 0;
+            }
+          }
+
+        }
+      }
+
+    .block > .cta1, .block > .cta2, .block > .cta3 {
+      padding: 30px 0;
+      margin: -24px -10px 24px -20px;
+      }
+
+    .block > .cta1 + .cta1, .block > .cta2 + .cta2, .block > .cta3 + .cta3 {
+      padding: 0;
+      }
+
+    .withExtraText .ctaBold {
+      display: block;
+      }
+
+    a {
+      margin: 9px;
+      margin-left: 0;
+      }
+    }
+
+  //================================== Confirmation page Styling
+  div.span_1_of_2 {
+    width: cp(670, 960);
+    float: left;
+    margin-right: cp(40, 960);
+
+    ul {
+      list-style: disc outside none;
+      margin-left: 15px;
+      margin-top: 0px;
+
+      li {
+        padding-bottom: 18px;
+
+        &:last-child {
+          padding: 0;
+          }
+        }
+      }
+
+    h1 {
+      float: none;
+      text-transform: none;
+      }
+    }
+
+  div.span_2_of_2 {
+    float: left;
+    width: cp(250, 960);
+
+    h1 {
+      color: #000000;
+      margin: 0;
+      }
+    h2 {
+      font-size: 19px;
+      color: #59A946;
+      }
+    }
+
+  //================================== Dialog Boxes Styling
+  .ui-widget-overlay {
+    background: none repeat-x scroll 50% 50% #000000;
+    opacity: 0.8;
+    }
+
+  .ui-widget-overlay {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    }
+
+  .ui-dialog .ui-dialog-content {
+    background: transparent;
+    border: 0 none;
+    overflow: auto;
+    padding: 0.5em 1em;
+    position: relative;
+    }
+
+  .ui-dialog .ui-dialog-content {
+    // @border-box
+    background: #EAEDF1;
+    padding: 20px;
+    color: #222222;
+    margin-top: 0;
+    overflow: hidden;
+    width: 100% !important;
+    }
+
+  .ui-dialog {
+    outline: none;
+    }
+
+  .ui-dialog-titlebar {
+    height: 30px;
+    }
+
+  .ui-dialog-buttonpane {
+    background: #EAEDF1;
+    clear: both;
+    overflow: auto;
+    padding: 15px 15px 20px;
+    }
+
+  .ui-dialog-titlebar button {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    float: right;
+    padding-right: 5px;
+    }
+
+  .lightbox_action {
+    float: left;
+    position: relative;
+    margin: 5px;
+    background-color: #2BA5D7;
+    border: medium none;
+    padding: 10px;
+    color: #FFFFFF;
+    }
+  //================================== END Dialog Boxes Styling
+  .field.networkGuarantee {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding-right: 50px;
+    p {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      }
+    > ul.ctaList {
+      margin-top: 9px;
+      margin-bottom: 11px;
+      font-weight: bold;
+      }
+    }
+
+  .cta2 {
+    background: none;
+    // display: block !important;
+    .block {
+      border: none;
+      background: #76BF4F; //light greyish;
+      float: left;
+      width: 100%;
+      padding: 15px 12px;
+      //border-bottom: 3px solid #528537;
+      //border-right: 3px solid #528537;
+      //@border-box
+      //@border-radius
+      }
+    // p{
+    //     float:          left;
+    //     margin:         0;
+    // }
+    a {
+      margin: 0;
+      color: #fff;
+      display: inline-block;
+      }
+    .note {
+      margin-top: 5px;
+      color: #fff;
+      }
+
+    hr {
+      display: none;
+      }
+    }
+
+  .controls {
+    float: right;
+    margin: 10px 4px 10px 10px;
+    }
+
+  //MARGINS & PADDING top & bottom for sections/clock etc
+  .section {
+    padding-top: 24px;
+    padding-bottom: 34px; // up 2 px because of hr's
+    }
+  .widthFixedSmall {
+    //padding-bottom:      11px;
+    }
+
+  // HELPFUL TIP MODULE
+
+  .helpfulTipWrapper {
+    padding: 4px 14.5px 0;
+    width: 66%;
+
+    //float: 	left;
+    //margin: 	51px -332px 0 12px !important;
+    //width: 	cp(588, 920);
+
+    .dottedLine {
+      display: none;
+      position: relative;
+      float: left;
+      width: 81px;
+      border-bottom: 1px dotted #888;
+      top: 13px;
+      }
+    }
+  .helpfulTip {
+    margin-left: 81px;
+
+    .questionIcon {
+      display: inline;
+      float: left;
+      width: 27px;
+      margin-left: 0;
+      margin-top: 4px;
+      // margin-left: 8px;
+      margin-bottom: 28px;
+      }
+
+    p {
+      display: inline;
+      }
+    }
+
+  .textFieldsOnly {
+
+    &.cta2 .block {
+
+      p {
+        margin: 0 0 20px;
+        }
+
+      div.field {
+        margin-right: 9px;
+        }
+      }
+
+    .block {
+
+      > div.field {
+        float: left;
+        margin-right: 50px;
+        margin-bottom: 18px;
+        width: 320px;
+        }
+
+      > div.field.btnField {
+        width: auto;
+        margin: 0;
+        }
+      }
+    }
+
+  .singleTextField {
+
+    .textField {
+      float: left;
+      .middleColumn {
+        @include clearfix;
+        float: left;
+        width: 320px;
+        }
+      }
+
+    .btnField {
+      float: left;
+      clear: both;
+      margin-top: 10px;
+      }
+
+    .codeSuccess {
+      float: left;
+      clear: both;
+      margin-top: 16px;
+      display: $devDisplay;
+      }
+    }
+
+  .withHelpfulTip {
+
+    > div {
+      > div {
+        > div {
+          float: left;
+          margin-bottom: 18px;
+          }
+        }
+      }
+    }
+
+  .innerSection, .innerSectionEU {
+    display: $devDisplay; //default = none;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-top: 1px dotted #DDD;
+
+    p {
+      margin: 0 0 23px;
+      }
+    }
+  .icpSubmitSection {
+    p {
+      margin: 0 0 23px;
+      }
+    }
+
+  .block .innerSection {
+    display: block;
+    }
+
+  .optionset + .innerSection {
+    display: $devDisplay;
+    }
+
+  .dropdown > div {
+    position: relative;
+    @include clearfix;
+
+    > .note {
+      position: absolute;
+      bottom: -35px;
+      }
+    }
+
+  //TEMP FIX
+  .dropdown {
+    @include clearfix;
+    }
+
+  .nameWrapper {
+    input {
+      width: 320px;
+      }
+    &.cancellation {
+      margin-bottom: 15px;
+      display: block; //for the cancellation (call us) box header layout
+      }
+    }
+
+  .loader {
+//    display: block;
+//    position: relative;
+//    //left: 40%;
+//    margin: 0 auto;
+//    padding: 50px 0;
+//    //float: left;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    float: left;
+
+    }
+
+  // FEATURES & BENEFITS FORM =============================
+  .featuresTable div label {
+    display: none;
+    }
+  .FormHeading.section,
+  .featuresTable.section {
+    background: none;
+    }
+  .summaryHeader {
+    width: 100%;
+    float: left;
+    clear: both;
+
+    div {
+      height: 50px;
+      line-height: 50px;
+      background-color: #3eae29;
+      width: cp(420, 960);
+      line-height: 50px;
+      float: left;
+      padding-left: 21px;
+
+      //@border-box
+      }
+    div + div {
+      width: cp(540, 960);
+      border-left: 2px solid $bg-color;
+      padding-left: 9px;
+      }
+    }
+  .summaryBlock {
+    float: left;
+    width: 100%;
+    overflow-x: hidden;
+
+    + .summaryBlock h3 {
+      margin-top: 27px;
+      }
+    h3 {
+      float: left;
+      width: 100%;
+      display: block;
+      margin-bottom: 7px;
+      margin-top: 3px;
+      padding-left: 21px;
+      }
+    &::last-child .hoverRow:last-child {
+      border-bottom: 1px solid transparent;
+      }
+    }
+
+  .hoverRow {
+    float: left;
+    width: 100%;
+    clear: both;
+    border-bottom: 1px dotted #ddd;
+    &.even {
+      background-color: #c5e6bf;
+      }
+
+    @if $touch == false {
+      &:hover {
+        background: #F5F6F8;
+        }
+      }
+
+    > div {
+      width: cp(420, 960);
+      float: left;
+      padding: 15px 10px 15px 21px;
+      //@border-box
+      }
+    > div + div {
+      width: cp(420, 960); //was 460 made room for bigger button
+      padding-left: 11px;
+      padding-right: 20px;
+      }
+    a {
+      float: left;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      }
+
+    .textLink {
+      display: block !important;
+      //&.btnMed.blue{display:initial !important}; // to override the button in summary tab
+      }
+    }
+
+  .section {
+    display: $devDisplay; //default = none
+    }
+
+  .openSection {
+    background: #F5F6F8;
+
+    .textLink.schoolLink {
+      display: inline;
+      margin-left: 40px;
+      }
+    }
+
+  .hoverSection {
+
+    @if $touch == false {
+      background: none;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        content: '';
+        background: rgba(darken($bg-color, 10%), 0.3);
+        z-index: 99;
+        visibility: visible;
+        }
+      }
+
+    @if $touch == false {
+      &:hover {
+        background: #F5F6F8;
+        &:after {
+          background: rgba($bg-color, 0);
+          visibility: hidden;
+          }
+        }
+      }
+    }
+
+  .openSection .textLink {
+    display: none;
+    }
+
+  .multiSection .textLink {
+    display: inline;
+    }
+
+  .completedSection {
+    position: relative;
+    display: block;
+    @if $touch == false {
+      &:hover {
+        background: $completed-hover;
+        //cursor: pointer;
+        }
+      }
+    //   @if $touch == false {
+    // &:after{
+    // 	position: absolute;
+    // 	top:		0;
+    // 	left:		0;
+    // 	height:		100%;
+    // 	width:		100%;
+    // 	content:	'';
+    // 	background: rgba($bg-color,0.6);
+    // 	z-index:	99;
+    // 	visibility: visible;
+    // }
+    //   }
+
+    .textLink {
+      display: inline;
+      }
+
+    // @if $touch == false {
+    //     &:hover{
+    //          &:after {
+    //             background: rgba($bg-color,0);
+    //             visibility: hidden;
+    //         }
+    //     }
+    // }
+    }
+
+  .openInnerSection {
+    display: block;
+    }
+
+  //submitted page arrows
+
+  .arrow-right {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -20px; // because of ffpad shim to make firefox play nice
+    left: -30px;
+    z-index: 10;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    //border-left: 2em solid green;
+
+    &.lightgrey { border-left: 1.5em solid #e5eae6; }
+    &.lightgreen { border-left: 1.5em solid #95c224; }
+    &.darkgreen { border-left: 1.5em solid #5ba335; }
+    &.darkgrey { border-left: 1.5em solid #697c66; }
+    &.grey { border-left: 1.5em solid #cdcac1; }
+    &.green { border-left: 1.5em solid $pulse-green; }
+    &.coolgrey { border-left: 1.5em solid $pulse-cool-grey; }
+    &.greentint { border-left: 1.5em solid $pulse-green-tint; }
+    &.limegreen { border-left: 1.5em solid $pulse-lime-green; }
+    &.greygreen { border-left: 1.5em solid $pulse-grey-green; }
+    &.warmgrey { border-left: 1.5em solid $pulse-warm-grey; }
+    }
+
+  .arrow-down {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    right: 20px;
+    border-left: 1.0em solid transparent;
+    border-right: 1.0em solid transparent;
+    //border-left: 2em solid green;
+    &.lightgrey { border-top: 1.5em solid #e5eae6; }
+    &.lightgreen { border-top: 1.5em solid #95c224; }
+    &.darkgreen { border-top: 1.5em solid #5ba335; }
+    &.darkgrey { border-top: 1.5em solid #697c66; }
+    &.grey { border-top: 1.5em solid #cdcac1; }
+    &.green { border-top: 1.5em solid $pulse-green; }
+    &.coolgrey { border-top: 1.5em solid $pulse-cool-grey; }
+    &.greentint { border-top: 1.5em solid $pulse-green-tint; }
+    &.limegreen { border-top: 1.5em solid $pulse-lime-green; }
+    &.greygreen { border-top: 1.5em solid $pulse-grey-green; }
+    &.warmgrey { border-top: 1.5em solid $pulse-warm-grey; }
+    &.emeraldgreen { border-top: 1.5em solid $greypower-emerald-green; }
+    }
+
+  .bg {
+    &.coolgrey { background-color: $pulse-cool-grey; }
+    &.greentint { background-color: $pulse-green-tint; }
+    &.limegreen { background-color: $pulse-lime-green; }
+    &.greygreen {
+      background-color: $pulse-grey-green;
+      color: white;
+      }
+    &.darkgrey { background-color: #697c66 }
+    &.warmgrey { background-color: $pulse-warm-grey; }
+    &.green, &.pulsegreen {
+      background-color: $pulse-green;
+      color: white;
+      }
+    &.emeraldgreen {
+      background-color: $greypower-emerald-green;
+      color: white;
+      }
+    }
+
+  //silverstripe image layouts
+
+  img {
+    &.left { padding-right: 15px }
+    &.leftAlone {
+      display: block;
+      padding: 5px 15px 10px 5px
+      }
+    &.right { padding-left: 15px }
+    &.rightAlone {
+      display: block;
+      padding: 5px 10px 15px 5px
+      }
+    }
+
+  // APPLICATION FORM ========================
+
+  .field.postal-address, .field.move-in-date, .field.dog-nature, .field.alt-contact, .pnumvalue, .application > div .pnumtitle {
+    display: $devDisplay;
+    }
+
+  // MOBILE DESIGN ============================
+  @include media(2, max) {
+    body {
+      border: none;
+      }
+    .section {
+      padding-top: 18px;
+      padding-bottom: 28px;
+      }
+    .block {
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      }
+    .topnav {
+      display: none;
+      }
+
+    .hoverRow a {
+      text-indent: -9999em;
+      border-bottom: none;
+      }
+    #Suburb {
+      width: 100%;
+      }
+    .searchWrapper {
+      max-width: 100%;
+      }
+    .helpfulTipWrapper {
+      width: 100%;
+      float: left;
+      clear: both;
+      margin: 0 !important;
+
+      .helpfulTip .questionIcon {
+        margin-bottom: 47px;
+        }
+
+      .helpfulTip {
+        margin-left: 0;
+        }
+      }
+
+    .subBlock {
+      border-radius: 0;
+      padding-left: 3.5px;
+      padding-right: 3.5px;
+      width: 100%;
+      margin-left: -3.5px;
+      }
+
+    .textFieldsOnly {
+      .block > div.field {
+        width: 100%;
+        // margin-bottom:  9px;
+        }
+      }
+
+    .singleTextField {
+
+      .textField {
+        width: 100%;
+        }
+      width: 100%;
+
+      .middleColumn {
+        width: 100%;
+        }
+      }
+
+    .nameWrapper input.text {
+      width: 80%;
+      }
+
+    div.span_1_of_2, div.span_2_of_2 {
+      float: none;
+      clear: both;
+      width: 100%;
+      > div {
+        margin: 0 10px 0;
+        }
+      }
+
+    .controls {
+      float: none;
+      margin: 5px 4px 5px 4px;
+      text-align: center;
+      }
+
+    }
+
+  @media screen and (max-width: 728px) {
+
+    .section,
+    .application {
+      overflow-x: hidden;
+      }
+    div.optionset.widthFixedLarge li + li + li + li {
+      margin-top: 5px;
+      }
+
+    div.optionset .radioWrapper {
+      border: 1px solid #E3E5E7;
+      }
+    div.optionset li,
+    .application > div.textarea .input460,
+    div.optionset .radioWrapper,
+    div.optionset.widthFlexi li label,
+    div.optionset.widthFlexi li,
+    div.optionset.widthFixedLarge li label,
+    div.optionset.widthFixedLarge li,
+    div.optionset.widthFixedSmall li label,
+    div.optionset.widthFixedSmall li {
+      width: 100%;
+      }
+    div.optionset li,
+    div.optionset.widthFixedLarge li + li,
+    div.optionset.widthFlexi li + li,
+    div.optionset.widthFixedSmall li + li {
+      margin-top: 5px;
+      }
+    div.optionset .radioWrapper {
+      background: #F5F6F8;
+      }
+
+    /* features table */
+    .block {
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      }
+    .summaryBlock h3,
+    .summaryHeader div {
+      padding-left: 3.5px;
+      }
+    .hoverRow > div {
+      padding: 10px 3.5px 10px 7px;
+      }
+    .textFieldsOnly .block > div {
+      margin-bottom: 9px;
+
+      &.btnField {
+        clear: both;
+        }
+      }
+    .cta1 {
+      border-left: 3.5px solid transparent;
+      border-right: 6px solid transparent;
+      }
+    .cta2 {
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      }
+    .withHelpfulTip > div {
+      margin-bottom: 40px;
+      float: left;
+      width: 100%;
+      }
+    .notFound .fieldholder-small > label,
+    .notFound .fieldholder-small + label {
+      width: 100%;
+      }
+    .subBlock {
+      border-radius: 0;
+      // padding-left:	8px;
+      // padding-right:	8px;
+      width: 100%;
+      margin-left: -3.5px;
+      }
+
+    #School .textLink {
+      margin-left: 5px;
+      margin-top: 10px;
+      display: block;
+      float: left;
+      }
+    .textFieldsOnly .dropdown + .dropdown {
+      margin-top: 15px;
+      }
+
+    .ui-dialog {
+      padding: 0 10px;
+      }
+    }
+
+  @media screen and (max-width: 1000px) {
+
+    .helpfulTipWrapper {
+      padding-top: 0;
+      clear: both;
+
+      .dottedLine {
+        display: none !important;
+        }
+      }
+    .helpfulTip {
+      margin-left: 0;
+      }
+    }
+
+  // DESKTOP DESIGN ============================
+  @include media(2, min) {
+    .hoverRow a {
+      background-image: none;
+      width: auto;
+      }
+    }
+  }
+
+
+
+
+
+
+

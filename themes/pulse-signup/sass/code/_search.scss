@@ -1,0 +1,119 @@
+
+
+@if $breakpoint == small {
+
+
+/* search ================================= */
+
+.searchWrapper {
+
+  //@inline-block
+  position: relative;
+  height: 36px;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 5px;
+  margin-right:34px;
+
+  .search {
+    width: 34px;
+    position: absolute;
+    top: 1px;
+    left: 2px;
+  }
+
+  .search-cancel {
+    display: none;
+    width: 34px;
+    position: absolute;
+    top: 1px;
+    right: -34px;
+    cursor: pointer;
+  }
+
+  input[type=text] {
+    //@border-box
+
+    padding: 9px 10px 9px 32px;
+    font-size: 14px;
+    width: 100%;
+
+    // .search {
+    //     @opacity;
+    //     @simple-transition;
+    // }
+
+    &:focus {
+      border: 1px solid #407CD6;
+      outline: none;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+      // + .search {
+      //     @include simple-transition;
+      //     @include opacity;
+      // }
+    }
+  }
+}
+
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+ul.af_list {
+  position: absolute !important;
+  font-family: Arial, san-serif;
+  width: 100%;
+  max-width: 318px;
+  list-style: none;
+  padding: 7px 0 9px 0;
+  margin: 0;
+  border: 1px solid #CCCCCC;
+  background: #EEE;
+  font-size: 14px;
+  z-index:999;
+  //@border-radius
+
+  li.af_item{
+	  cursor: pointer;
+	  padding: 5px 10px 6px 10px;
+	  overflow:hidden;
+	  white-space: nowrap;
+	  text-overflow: ellipsis;
+
+    a {
+      color: #333;
+      padding: 3px 10px;
+      display: block;
+    }
+
+    @if $touch == false {
+        &:hover{
+          background: #FFF;
+        }
+        &:active{
+          background: #FFF;
+        }
+    }@else {
+      &:active{
+          background: #FFF;
+      }
+    }
+	}
+
+  .ui-state-focus {
+    background: #FFF;
+  }
+}
+
+
+
+
+} // end breakpoint small ====================
+
+@if $breakpoint == large {
+/* forms large */
+
+
+} // end breakpoint large ====================t large ====================

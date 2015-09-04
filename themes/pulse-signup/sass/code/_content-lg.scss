@@ -1,0 +1,37 @@
+@if $breakpoint == large {
+
+    // GENERAL
+	form, .site-container, #SignUpForm {
+        max-width:  960px;
+        margin:     0 auto;
+    }
+
+    #SignUpForm {
+        margin-bottom: 100px;
+    }
+
+    .site-container {
+    	@include clearfix;
+    }
+
+    .helpfulTipWrapper .dottedLine {
+		display: inline;
+    }
+
+    .singleTextField {
+        .btnField {
+            float: left;
+            clear: none;
+            position: relative;
+            bottom: -40px;
+            margin-left: 10px;
+            margin-top: 0;
+        }
+    }
+}
+
+
+
+
+
+

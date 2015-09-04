@@ -1,0 +1,415 @@
+@if $breakpoint == small {
+	/* includes small */
+
+
+    // GENERAL ========================
+
+    @if $vendor == webkit and $touch == true {
+        // Remove 'tap' overlay on iOS
+        // Prevent callout in iOs
+        a, label, input {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-touch-callout: none;
+        }
+    }
+
+    // * {
+    // 	@include simple-transition(all, 9s);
+    //  border: 1px dotted red;
+    // }
+
+    body,
+    .block{
+        @include border-box;
+    }
+	.cta1, .cta2 {
+        @include    border-box;
+	}
+
+    .cta1 .block, .cta2 .block, .cta3 .block{
+        @include    border-box;
+        //@include    border-radius(4px);
+        div{
+            @include    border-box;
+          //  @include    multi-border-radius(3px, 0, 3px, 0);
+        }
+    }
+//    .cta2 .block{
+//        @include    border-box;
+//       // @include    border-radius(4px);
+//    }
+
+    .subBlock {
+        @include border-radius(4px);
+    }
+
+	.helpfulTipWrapper{
+        @include    border-box;
+	}
+
+
+	.section, .hoverSection, .completedSection, .hoverRow, .application .field {
+             @include simple-transition(background,0.6s);
+                //cursor: pointer;
+
+
+	}
+
+	.section, .hoverSection, .completedSection{
+        @if $touch == false {
+            &:after {
+                @include simple-transition(all, 0.6s);
+            }
+        }
+	}
+
+	// // !!FORMS =====================
+    .optionset{
+
+        input.radio{
+            @include opacity(0);
+        }
+
+        .radioWrapper{
+            @include    border-radius(4px);
+            @include    border-box;
+            @include    simple-transition(border,0.5s);
+        }
+        .tag{
+            @include    border-radius(3px);
+        }
+        .labelStrong, .labelStd{
+            @include    border-box;
+        }
+    }
+
+    .widthFixedLarge li {
+    	// @include simple-transition(all, 2s);
+    }
+
+    // !FEATURES AND BENEFITS TABLE
+    .summaryHeader div,
+    .hoverRow div{
+        @include  border-box;
+    }
+
+    // !!APPLICATION FORM ===================
+    .application input.text,
+    .application textarea,
+    .application > div > label,
+    .application .ddl,
+    .input60,
+    .input80,
+    .input310,
+    .input350,
+    .input460,
+    .input720{
+        @include    border-box;
+    }
+
+
+
+
+
+
+	// DDL FORM CONTROL INCLUDES
+	textarea,
+	input.text,
+	.ddl {
+
+		 @include border-box;
+	     @include border-radius(4px); //upped to 4px to match input.text
+	     @include box-shadow(inset 0 0 3px #CCC);
+	     @include simple-transition(border, 1.5s);
+
+	}
+
+	.ac_results {
+		@include multi-border-radius(0, 0, 4px, 4px);
+		@include box-shadow(inset 0 0 3px #CCC);
+	}
+
+	.scroll {
+		@include border-radius(4px);
+
+		.bar {
+			@include simple-transition(all, 0.5s);
+		}
+	}
+
+	// SEARCH FORM CONTROL INCLUDES
+
+	ul.af_list {
+		@include multi-border-radius(0, 0, 4px, 4px);
+		@include box-shadow(inset 0 0 3px #CCC);
+	}
+
+    .searchWrapper {
+        @include inline-block;
+
+        .search {
+            @include opacity(40);
+            @include simple-transition(opacity, 2s);
+        }
+
+        input[type=text] {
+
+            @include border-box;
+            @include box-shadow(inset 0 0 4px #CCC);
+
+            @if $vendor == ms and $version < 8 {
+                width: 276px!important;
+            }
+
+            &:focus {
+                + .search {
+                    @include simple-transition(opacity, 2s);
+                    @include opacity(100);
+                }
+            }
+
+            //Removes default clear button in IE/ only works for IE 10 / need to get global fix
+            &::-ms-clear {
+                width : 0;
+                height: 0;
+            }
+        }
+    }
+
+
+
+	// BUTTONS =====================
+
+	.btn, .action {
+		@include inline-block;
+		@include border-radius(8px);//was 4
+		@include simple-transition(background,1s);
+	}
+
+	.reset, .signup, .continue, .continue-back {
+		@include inline-block;
+	}
+
+  // TAB NAVIGATION
+
+    .tabNav {
+
+        >li {
+            @include border-box;
+        }
+
+        .tabBlock.ui-state-default.ui-tabs-active {
+            @include box-shadow(inset 0 0 3px rgba(0,0,0, 0.3));
+
+            .currentTri {
+                @include triangle(11px, down, #59A946);
+            }
+        }
+
+        .tabBlock.ui-state-default {
+            @include multiproperty-transition(0.4s, background, border);
+        }
+    }
+
+    //TOP NAV
+
+    	.topNav {
+    		@include border-box;
+    	}
+
+
+    // EDIT DIALOG BOX =====================
+     .ui-dialog .ui-dialog-content {
+        @include border-box;
+    }
+
+    .ui-dialog {
+    // @include box-shadow(0 13px 13px 1px rgba(1,0,0,0.8));
+        }
+
+
+	/* INTERNET EXPLORER FIXES ========================= */
+	@if $vendor == ms and $version < 9{
+		.oldie{
+			.cta1 .block div{
+					margin-top:		-2px;
+					margin-left:	-2px;
+			}
+		}
+	}
+	/* INTERNET EXPLORER 8 FIXES ========================= */
+	@if $vendor == ms and $version == 8{
+		.ie8{
+			.cta1 .block{
+				padding-right: 1px;
+			}
+		}
+	}
+	/* INTERNET EXPLORER 7 FIXES ========================= */
+	@if $vendor == ms and $version == 7{
+		.ie7 {
+
+			body{
+				border-width:	0;
+				overflow:		hidden;
+			}
+			/* call to action */
+			.cta1 .block div{
+				width :		933px;
+			}
+			.cta2 .block{
+				width:		936px;
+			}
+
+			.subBlock p{
+				float:	left;
+			}
+
+			/* featuresTable */
+			.summaryHeader div {
+				width: 399px;
+
+				+ div{
+					width: 529px;
+				}
+			}
+			.section.featuresTable{
+				padding-top: 0; //added to .summaryBlock
+			}
+			.summaryBlock{
+				padding-top:	30px;
+			}
+			.hoverRow > div{
+				width:	389px;
+				+ div{
+					width: 475px;
+				}
+			}
+
+			/* application form */
+			.application{
+
+				> div > label:first-child{
+					display: 	block;
+					float:		left;
+					width:		140px;
+					margin-top:	5px;
+				}
+				#Postal_Address,
+    			#Physical_Address{
+					label{
+						width:		140px;
+					}
+				}
+
+				.input60,.input80,.input310,.input350,.input460,.input720{
+					border: none;
+					border-width: 0;
+					padding: 0 10px;
+				}
+
+				.input60{
+					width: 60px;
+					input{
+						width: 38px;
+					}
+					.ddl{
+						width:	43px
+					}
+				}
+				.input80{
+					width: 80px;
+					input{
+						width: 58px;
+					}
+				}
+				.input310{
+					width: 310px;
+					input{
+						width: 288px;
+					}
+				}
+				.input350{
+					width: 350px;
+					input{
+						width: 328px;
+					}
+				}
+				.input460{
+					width: 460px;
+					input, textarea{
+						width: 438px;
+					}
+				}
+				.input720{
+					width: 720px;
+					input{
+						width: 698px;
+					}
+				}
+			}// end .application
+
+
+			/* tab navigation */
+			.tabNav {
+				li {
+					width: 239px;
+					height: 99px;
+				}
+				.ui-tabs-active {
+					width: 238px;
+					height: 97px;
+				}
+			}// end tab navigation
+
+
+			/* ddl */
+			.ddl {
+				width: 302px;
+			}// ddl
+
+
+		}// end .ie7
+	}
+
+
+	@media screen and (max-width:568px){
+		.application > div > label {
+			@include border-box;
+		}
+	}
+
+
+
+} // end breakpoint small ====================
+
+@if $breakpoint == large {
+	/* includes large */
+
+
+    // TAB NAVIGATION
+    .tabNav {
+
+        li:first-child {
+            @include multi-border-radius(15px, 0, 0, 15px);
+        }
+
+        li:last-child {
+            @include multi-border-radius(0, 15px, 15px, 0);
+        }
+
+        .tabBlock.ui-state-default.ui-tabs-active {
+
+            .currentTri {
+                @include triangle(11px, right, #59A946);
+            }
+        }
+    }
+
+
+
+} // end breakpoint large ====================
+
+
+
+

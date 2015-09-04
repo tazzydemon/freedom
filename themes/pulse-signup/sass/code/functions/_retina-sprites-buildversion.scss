@@ -1,0 +1,55 @@
+
+/* 	This function has been built so that you can work without creating the sprite map until you have
+ 		finished. 
+   	It seems that Codekit+Compass has increased compiling times as it generates a new sprite
+  		every save. 
+   	It also doesn't handle the retina media query very well. 
+	Please continue to build the retina sprites, and compile it together at the end of the project.
+
+	Once finished then change _style.scss over to the _retina-sprites.scss
+*/ 
+
+@import "compass/utilities/sprites";         // Include compass sprite helpers
+@import "compass/css3/background-size";      // Include helper to calc background size
+
+$sprites: sprite-map("sprites/*.png");  /**/ 
+
+@mixin sprite($name) {
+  @include retina-sprite($name, $sprites);
+}
+
+@mixin retina-sprite($name, $sprites, $dimensions: true, $pad: 0) {  
+  @if $dimensions == true {
+    @include sprite-dimensions($sprites, $name);
+  }
+  $sp1: "../images/sprites/"+$name+".png"; 
+  
+  background-image: url( $sp1 );
+  background-repeat: no-repeat;
+  @if $pad > 0 {
+    padding: $pad;
+  }
+}
+
+
+/* SECONDARY SPRITE */
+$sprites2: sprite-map("sprites-secondary/*.png");  /**/ 
+
+@mixin sprite2($name) {
+  @include retina-sprite($name, $sprites2);
+}
+
+@mixin retina-sprite($name, $sprites2, $dimensions: true, $pad: 0) {  
+  @if $dimensions == true {
+    @include sprite-dimensions($sprites2, $name);
+  }
+  $sp1: "../images/sprites-secondary/"+$name+".png"; 
+  
+  background-image: url( $sp1 );
+  background-repeat: no-repeat;
+  @if $pad > 0 {
+    padding: $pad;
+  }
+}
+
+

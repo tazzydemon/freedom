@@ -1,0 +1,110 @@
+/* =======================================
+
+ * Styles for ie6 page only *
+ 
+ * Please modify them to suit the brand *
+ 
+ ========================================= */
+#ie6-browser-outdated-notice{ display: none ; } /* turn off for other browsers */
+
+.ie6 #container{ 
+	display: none ; 							/* turn off for ie6 */	
+}
+
+.ie6 #ie6-browser-outdated-notice{
+	display : block ;  							/* turn one for ie6 */
+	width:	960px;
+	margin:	0 auto;
+	padding-bottom: 60px;
+	@extend .clearfix;
+	
+	img{
+		margin-bottom: 30px;
+		float: left;
+	}
+	.header{ 
+		@extend .clearfix;  
+		margin-top: 50px;	
+		
+		hr{
+			clear: both;	
+		}
+	}
+	
+	.headerInfo{
+		width: 400px;
+		float: left;
+		clear: none;
+		padding-left: 50px;	
+	}
+	
+	.ie6-left{
+		width:	600px;
+		float: left;
+		border-right: 1px dotted #555;
+		padding-right: 30px;
+		margin-top:		20px;
+	}
+	
+	
+	.ie6-browser{
+		@extend .clearfix;
+		
+		h4{
+			margin-bottom: 4px;	
+		}
+		div{
+			width: 340px;
+			float: left;
+		}
+		.ie6-browser-links{
+			width: 238px;
+			float:	right;
+			clear:	none;
+		}
+	}
+	.ie6-gc, .ie6-moz{
+		background:url(../images/fallback-images/chrome.jpg) no-repeat ;	
+		width:	230px;
+		height: 40px;
+		margin: 20px auto;
+		display: block;
+		clear: both;
+	}
+	.ie6-moz{
+		background:url(../images/fallback-images/mozilla.jpg) no-repeat ;		
+	}
+	
+	.ie6-chromeFrame{
+		width:	230px;
+		height:	200px;
+		display: block;
+		float: right;
+		clear: none;
+		background:url(../images/fallback-images/chromeframe.jpg) no-repeat ;
+	}
+	
+	/* border hovers */
+	.ie6-gc, .ie6-moz, .ie6-chromeFrame{
+		border-left: 8px solid #111;
+		&:hover{
+			border-left: 8px solid #f00;
+		}	
+	}
+	
+	
+	.chromeFrameText{
+		float:left;
+		width: 340px;	
+		clear: none;
+		margin-top: 0;
+		
+	}
+	
+	.ie6-right{
+		width:	300px;
+		float: right;
+		margin-top:		20px;
+	}
+
+}

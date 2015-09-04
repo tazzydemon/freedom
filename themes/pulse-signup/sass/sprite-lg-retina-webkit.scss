@@ -1,0 +1,11 @@
+@import "code/functions/_retina-sprites.scss";
+
+$breakpoint:	large;
+$version: 		0;
+$vendor :       webkit;
+$retina:        true;
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5){
+	@import "code/_sprites"; 
+}

@@ -1,0 +1,4 @@
+css/
+compass*app*log*
+.sass-cache/
+images/sprites-*.png

@@ -1,0 +1,136 @@
+@import "compass/utilities/sprites";         // Include compass sprite helpers
+//@import "compass/css3/background-size";      // Include helper to calc background size
+@mixin background-size($size-1: $default-background-size, $size-2: false, $size-3: false, $size-4: false, $size-5: false, $size-6: false, $size-7: false, $size-8: false, $size-9: false, $size-10: false) {
+    $size-1: if(type-of($size-1) == string, unquote($size-1), $size-1);
+    $sizes: compact($size-1, $size-2, $size-3, $size-4, $size-5, $size-6, $size-7, $size-8, $size-9, $size-10);
+    @if $vendor == no-prefix{
+        background-size: $sizes;
+    }@else if $vendor == webkit{
+        -webkit-background-size: $sizes;
+    }@else if $vendor == moz{
+        -moz-background-size: $sizes;
+    }@else if $vendor == o{
+        -o-background-size: $sizes;
+    }
+
+}
+
+
+$sprites: sprite-map("../images/sprites/*.png");
+$sprites2x: sprite-map("../images/sprites-retina/*.png");
+
+@mixin sprite($name) {
+  @include retina-sprite($name, $sprites, $sprites2x);
+}
+
+@mixin retina-sprite($name, $sprites, $sprites2x, $dimensions: true, $pad: 0) {
+  @if $vendor == no-prefix {
+      @if $retina == false {
+            @if $dimensions == true {
+                @include sprite-dimensions($sprites, $name);
+            }
+            background-image: sprite-url($sprites);
+            background-position: sprite-position($sprites, $name, -$pad, -$pad);
+            background-repeat: no-repeat;
+            @if $pad > 0 {
+                padding: $pad;
+            }
+      }
+      @if $retina == true {
+            @if $dimensions == true {
+                @include sprite-dimensions($sprites, $name);
+            }
+            $pos: sprite-position($sprites2x, $name, -$pad * 2, -$pad * 2);
+            background-image: sprite-url($sprites2x);
+            background-position: nth($pos, 1) nth($pos, 2) / 2;
+            @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
+      }
+  }@else if $vendor == webkit {
+        &{
+            @if $dimensions == true {
+                @include sprite-dimensions($sprites, $name);
+            }
+            $pos: sprite-position($sprites2x, $name, -$pad * 2, -$pad * 2);
+            background-image: sprite-url($sprites2x);
+            background-position: nth($pos, 1) nth($pos, 2) / 2;
+            @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
+        }
+  }@else if $vendor == moz {
+      &{
+          @if $dimensions == true {
+              @include sprite-dimensions($sprites, $name);
+          }
+          $pos: sprite-position($sprites2x, $name, -$pad * 2, -$pad * 2);
+          background-image: sprite-url($sprites2x);
+          background-position: nth($pos, 1) nth($pos, 2) / 2;
+          @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
+      }
+  }@else if $vendor == o {
+      &{
+          @if $dimensions == true {
+              @include sprite-dimensions($sprites, $name);
+          }
+          $pos: sprite-position($sprites2x, $name, -$pad * 2, -$pad * 2);
+          background-image: sprite-url($sprites2x);
+          background-position: nth($pos, 1) nth($pos, 2) / 2;
+          @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
+      }
+  }
+}
+
+
+// SECONDARY SPRITE
+$spritesSEC: sprite-map("../images/sprites-secondary/*.png");  /**/ 
+$spritesSEC2x: sprite-map("../images/sprites-secondary-retina/*.png"); /**/
+ 
+@mixin sprite2($name) {
+  @include retina-sprite($name, $spritesSEC, $spritesSEC2x);
+}  
+
+
+@mixin retina-sprite-2($name, $spritesSEC, $spritesSEC2x, $dimensions: true, $pad: 0) {
+
+    @if $vendor == no-prefix {
+        @if $retina == false {
+            @if $dimensions == true {
+                @include sprite-dimensions($spritesSEC, $name);
+            }
+            background-image: sprite-url($sprites);
+            background-position: sprite-position($spritesSEC, $name, -$pad, -$pad);
+            background-repeat: no-repeat;
+            @if $pad > 0 {
+                padding: $pad;
+            }
+        }
+        @if $retina == true {
+            @media only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx){
+                @if $dimensions == true {
+                    @include sprite-dimensions($spritesSEC, $name);
+                }
+                $pos: sprite-position($spritesSEC2x, $name, -$pad * 2, -$pad * 2);
+                background-image: sprite-url($spritesSEC2x);
+                background-position: nth($pos, 1) nth($pos, 2) / 2;
+                @include background-size(ceil(image-width(sprite-path($spritesSEC2x)) / 2) auto);
+            }
+        }
+    }@else if $vendor == webkit {
+        @media only screen and (-webkit-min-device-pixel-ratio: 1.5){
+            &  {
+                @include background-size(ceil(image-width(sprite-path($spritesSEC2x)) / 2) auto);
+            }
+        }
+    }@else if $vendor == moz {
+        @media only screen and (min--moz-device-pixel-ratio: 1.5){
+            &  {
+                @include background-size(ceil(image-width(sprite-path($spritesSEC2x)) / 2) auto);
+            }
+        }
+    }@else if $vendor == o {
+        @media only screen and (-o-min-device-pixel-ratio: 1.5/1){
+            &  {
+                @include background-size(ceil(image-width(sprite-path($spritesSEC2x)) / 2) auto);
+            }
+        }
+    }
+}
+

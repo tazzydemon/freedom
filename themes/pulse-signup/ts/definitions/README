@@ -1,0 +1,5 @@
+Find more TypeScript definition files at https://github.com/borisyankov/DefinitelyTyped
+
+Usage: Include a line like this at the top of your .ts file:
+
+/// <reference path="definitions/jquery.d.ts" />

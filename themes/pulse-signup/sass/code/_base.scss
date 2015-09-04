@@ -1,0 +1,61 @@
+
+@import "_type.scss";
+@import "_buttons.scss";
+@import "_nav.scss"; 			// include footer
+@import "_forms.scss";
+
+@import "_optionset-radio.scss";
+
+@import "_tables.scss";
+
+@import "_ddl.scss";
+
+@import "_search.scss";
+
+@import "_content-sm.scss"; 	// Small only
+@import "_content-lg.scss"; 	// Large only
+
+
+// add any @include sprites(), @include sprites2, to the _sprites.scss
+
+// add any @includes that add vendor prefixes to the _includes.scss
+
+// Please remember to appropriately style _ie6.scss (and modify the html to suit)
+
+
+// NOTES ==================
+// form validation,
+
+
+// CONSIDERATIONS =========
+// loading spinner,
+// give small touch links extra padding so they are easier to click
+// selectivzr doesnt work with dynamic content
+
+/*
+
+*/
+/* usage of if statements
+   copy and paste from here
+
+@if $breakpoint == small{
+
+}
+
+@if $breakpoint == large{
+
+}
+
+@if $touch {
+
+}
+
+@if $touch == false {
+
+}
+
+@if $vendor == no-prefix {
+
+}
+*/
+

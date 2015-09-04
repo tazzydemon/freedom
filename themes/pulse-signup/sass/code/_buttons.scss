@@ -1,0 +1,180 @@
+//Button Variables
+
+$green: #76BF4F;
+$blue: #2BA5D7;
+$blueDarker: #17607F;
+$greenNormal: #59A946;
+$greenDarker: #59A946;
+$greenDarkest: #10361B;
+
+$grey: #777777;
+$greyDarker: #444;
+
+@if $breakpoint == small {
+  /* BTN SMALL ============================ */
+
+  .btn {
+    //@inline-block();
+    //@border-radius();
+    color: white;
+    margin: 0;
+    // font: $fw-black 12px/1.2em "Nexa", $ff-sans;
+    border: none;
+
+    &:active {
+      color: white;
+      outline: none;
+      }
+    &:hover {
+      color: white;
+      }
+    &:focus {
+      color: white;
+      outline: none;
+      }
+
+    &.adBtnSmall {
+      padding: 3px 8px;
+      }
+
+    &.adBtnLarge {
+      padding: 9px 10px;
+      }
+
+    &.btnLarge {
+      padding: 14px 27px 14px;
+      }
+
+    &.btnMed,&.btnMedSummary {
+      padding: 5px 10px 7px;
+      }
+
+    &.green {
+      background-color: $greenNormal;
+      &:hover {
+        background-color: (darken($greenNormal, 5%));
+        }
+      }
+
+    &.darkGreen {
+      background-color: $greenDarkest;
+      &:hover {
+        background-color: (darken($greenDarkest, 5%));
+        }
+      }
+
+    &.blue {
+      color: #fff;
+      background-color: $blue;
+      &:hover {
+        background-color: $blueDarker;
+        }
+      }
+
+    &.grey {
+      background-color: $grey;
+      &:hover {
+        background-color: $greyDarker;
+        }
+      }
+    &:hover {
+      border-bottom: none;
+      }
+    }
+  .reset, .signup, .continue, .continue-back {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+    }
+  .controls .btn {
+    margin-top: 15px;
+    }
+
+  // disables btns
+  .disabled {
+    background-color: #ddd !important;
+    cursor: default !important;
+    &:hover {
+      background-color: #ddd !important;
+      }
+    }
+
+  /* submit / signup button */
+  .action {
+    color: #fff;
+    background-color: $blue;
+    background-image: url(../images/non-sprite/submit.png);
+    background-repeat: no-repeat;
+    background-position-x: 106px;
+    background-position-y: 8px;
+    border: none;
+    margin: 0;
+    position: relative;
+    padding: 6px 30px 7px 10px;
+    float: right;
+    position: relative;
+    padding-right: 50px !important;
+
+    &:hover {
+      background-color: $blueDarker;
+      }
+
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3 / 2), (min-device-pixel-ratio: 1.5) {
+      background-image: url(../images/non-sprite/submit-retina.png);
+      }
+
+    }
+  #Form_SignUpForm .Actions {
+    margin-right: 8px;
+    display: none;
+
+    a.btn {
+      float: left;
+      margin-right: 10px;
+      }
+    }
+
+  a {
+    color: $blue;
+    &:hover { color: $blueDarker; }
+    &:focus { color: $blueDarker; }
+    }
+
+  .textLarge a {
+    border-bottom: 1px dotted #fff;
+
+    &:hover {
+      border-bottom: 1px solid #fff;
+      }
+    }
+
+  @include media(2, max) {
+    .btn {
+      &.btnLarge {
+        padding: 13px 15px 13px;
+        }
+      &.btnMedSummary{  // edit buttons on review page for mobile
+        @include border-radius(0px);
+        padding:0;
+        &.blue{
+          background-color: transparent;
+          }
+        }
+
+
+      }
+    }
+
+  }
+// end breakpoint small ====================
+
+@if $breakpoint == large {
+  /* submit / signup button */
+  .Actions {
+    margin-right: 0;
+    float: right;
+    }
+
+  }
+// end breakpoint large ====================
+

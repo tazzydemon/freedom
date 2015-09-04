@@ -1,0 +1,19 @@
+{
+    "name": "silverstripe/framework",
+    "description": "Freedom Installer",
+    "require": {
+        "silverstripe/cms": "3.2",
+        "silverstripe/framework": "3.2",
+        "silverstripe/reports": "3.2",
+        "silverstripe/siteconfig": "3.2",
+        "silverstripe/userforms": "2",
+        "undefinedoffset/sortablegridfield": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "JW",
+            "email": "julian.warren@pulseenergy.co.nz"
+        }
+    ],
+    "minimum-stability": "dev"
+}

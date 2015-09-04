@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js ie6 oldie"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js ie7 oldie"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js ie8 oldie"> <![endif]-->
+<!--[if IE 9]>    <html lang="en" class="no-js ie9 "> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" data-theme-dir="/pulse-website/themes/pulse-signup">
+<!--<![endif]-->
+    <head>
+        <!-- <base href="../"> -->
+         <base href="/pulse-signup/themes/pulse-signup/">
+        <meta charset="utf-8" />
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+        <title></title>
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <!-- Included CSS Files -->
+        <script src="js/detectStylesheet.js"></script>
+        <!-- selectivir -->
+        <script src="js/thirdparty/modernizr.custom.34574.js"></script>
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="js/thirdparty/selectivizr-min.js"></script>
+        <![endif]-->
+    </head>
+        <body class="SignUp no-sidebar">
+
+
+            <form id="Form_SignUpForm" action="/pulse-website/sign-up-page/SignUpForm" method="post" enctype="application/x-www-form-urlencoded">
+
+
+            <p id="Form_SignUpForm_error" class="message " style="display: none"></p>
+
+            <a href="#" class="btn btnLarge green">Continue<span class="cancel"></span></a>
+            <a href="#" class="btn btnLarge grey">Signup<span class="signup"></span></a>
+
+
+            <fieldset>
+
+
+
+                <!--1. CURRENT USAGE SECTION -->
+                <div id="Sign_up_CurrentUsage" class="tab ">
+
+                    <!-- Question 3 -->
+                    <div class="section">
+                        <div class="block">
+                            <h3>If you are not sure, don't worry. We can estimate from one of your bills.</h3>
+                            <div id="BillSize" class="field dropdown">
+                                <label class="left" for="Form_SignUpForm_BillSize">3) Example Bill Size</label>
+                                <div class="middleColumn">
+                                    <select name="BillSize" class="dropdown" id="Form_SignUpForm_BillSize">
+                                        <option value="placeholder">Please select one</option>
+
+                                        <option value="LessThanAverage">Less than $100</option>
+
+                                        <option value="Average">Between $200 - $300</option>
+
+                                        <option value="MoreThanAverage">More than $300</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div id="Ave_or_byMonth" class="field dropdown">
+                                <label class="left" for="Form_SignUpForm_Ave_or_byMonth">Average Bill or By Month</label>
+                                <div class="middleColumn">
+                                    <select name="Ave_or_byMonth" class="dropdown" id="Form_SignUpForm_Ave_or_byMonth">
+                                        <!-- <option value="" selected="selected" disabled = "disabled">Please select one</option> -->
+                                        <option value="placeholder">Please select one</option>
+                                        <option value="Average">Average Bill</option>
+
+                                        <option value="Average">Average Bill</option>
+
+                                        <option value="ByMonth">By Month</option>
+
+                                        <option value="ByMonth1">By Month1</option>
+
+                                        <option value="ByMonth2">By Month2</option>
+
+                                        <option value="ByMonth3">By Month3</option>
+
+                                        <option value="ByMonth4">By Month4</option>
+
+                                        <option value="ByMonth5">By Month5</option>
+
+                                        <option value="ByMonth6">By Month6</option>
+                                        <option value="ByMonth7">By Month7</option>
+
+                                        <option value="ByMonth8">By Month8</option>
+
+                                        <option value="ByMonth9">By Month9</option>
+
+                                        <option value="ByMonth10">By Month10</option>
+                                        <option value="ByMonth11">By Month11</option>
+
+                                        <option value="ByMonth12">By Month12</option>
+
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <input type="hidden" name="SecurityID" value="e3ffd3011308f20706fd801e2e50751611dcacc9" class="hidden" id="Form_SignUpForm_SecurityID" />
+
+
+                <div class="clear"><!-- --></div>
+            </fieldset>
+
+
+            <div class="Actions">
+
+
+                <input type="submit" name="action_doSignUp" value="Submit" class="action" id="Form_SignUpForm_action_doSignUp" />
+
+
+
+            </div>
+
+
+            </form>
+
+
+            <!-- drop down lists -->
+            <div style="position:absolute;display:none" class="ac_results">
+                <div class="scroll"><div class="bar"></div></div>
+            </div>
+
+
+
+
+        <!--[if lt IE 9]>
+            <script src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.1.min.js'></script>
+            <script>
+                window.jQuery || document.write("<script src='js/thirdparty/jquery-1.10.1.min.js'>\x3C/script>")
+            </script>
+        <![endif]-->
+
+        <!--[if gte IE 9]><!-->
+            <script src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.js'></script>
+            <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+            <script>
+                window.jQuery || document.write("<script src='js/thirdparty/jquery-2.0.2.min.js'>\x3C/script>")
+            </script>
+        <!--<![endif]-->
+
+         <script>
+            (function (w, d) {
+                w.af = function (cb) {
+                    w.af.q = w.af.q || [];
+                    w.af.q.push(cb);
+                };
+
+                var af = d.createElement('script');
+                af.async = true;
+                af.src = (w.location.protocol === 'https:' ? 'https' : 'http') + '://addressfinder.infinity.io/af.min.js';
+                (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(af);
+            })(window, document);
+        </script>
+
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+            <!-- drop down lists -->
+            <script src="js/dropDownLists.js"></script>
+            <script src="js/ddlCustom.js"></script>
+
+            <!-- greensock -->
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.1/TweenMax.min.js"></script>
+
+
+
+
+        <!--[if lt IE 7]>
+            <link rel="stylesheet" href="css/ie6.css">
+            <script>
+                $('body').append('<div class="ie6-insert-message"></div>');
+                $('.ie6-insert-message').load('ie6.html');
+            </script>
+        <![endif]-->
+    </body>
+</html>

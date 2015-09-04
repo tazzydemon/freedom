@@ -1,0 +1,822 @@
+﻿// RESPONSIVE MIXIN MOBILE FIRST
+// NOTE: you cannot @extend inside a media query
+$mobile-point1: 320px;
+$mobile-point2: 568px; // iphone5 landscape
+$mobile-point3: 799px;
+$mobile-point4: 1024px;
+$mobile-point5: 1280px;
+
+@mixin media($level, $direction: min) {
+    @if $direction == min {
+        @if $level == 1 and $breakpoint == small {
+            @if $responsive == true{
+                @media (min-width: $mobile-point1 + 1) { @content; }
+            }@else{
+                @content;
+            }
+        }@else if $level == 2 and $breakpoint == small {
+            @if $responsive == true {
+                @media (min-width: $mobile-point2 + 1) { @content; }
+            }@else{
+                @content;
+            }
+        }@else if $level == 3 and $breakpoint == large {
+            @if $responsive == true{
+                @media (min-width: $mobile-point3 + 1) { @content; }
+            }@else{
+                @content;
+            }
+        }@else if $level == 4 and $breakpoint == large {
+            @if $responsive == true {
+                @media (min-width: $mobile-point4 + 1) { @content; }
+            }@else {
+                @content;
+            }
+        }@else if $level == 5 and $breakpoint == large and $responsive == true {
+            @media (min-width: $mobile-point5 + 1) { @content; }
+        }
+    }@else if $direction == max {
+    // adds max width only ... IGNORES >IE9
+        @if $level == 1 and $breakpoint == small and $responsive == true {
+                @media (max-width: $mobile-point1 ) { @content; }
+        }@else if $level == 2 and $breakpoint == small and $responsive == true {
+                @media (max-width: $mobile-point2 ) { @content; }
+        }@else if $level == 3 and $breakpoint == small and $responsive == true {
+                @media (max-width: $mobile-point3 ) { @content; }
+        }@else if $level == 4 and $breakpoint == small and $responsive == true {
+                @media (max-width: $mobile-point4 ) { @content; }
+        }@else if $level == 5 and $breakpoint == small and $responsive == true {
+                @media (max-width: $mobile-point5 ) { @content; }
+        }
+    }@else if $direction == next {
+    // adds media-query to next break point
+        @if $level == 1 and $responsive == true {
+            @media (min-width: $mobile-point1 + 1) and (max-width: $mobile-point2) { @content; }
+        }@else if $level == 2 and $responsive == true {
+            @media (min-width: $mobile-point2 + 1) and (max-width: $mobile-point3) { @content; }
+        }@else if $level == 3 and $responsive == true {
+            @media (min-width: $mobile-point3 + 1) and (max-width: $mobile-point4) { @content; }
+        }@else if $level == 4 and $responsive == true {
+            @media (min-width: $mobile-point4 + 1) and (max-width: $mobile-point5) { @content; }
+        }
+    }
+}
+
+// STICKY FOOTER Compass built in function
+// http://compass-style.org/reference/compass/layout/sticky_footer/
+// requires specific html
+@import "compass/layout/sticky-footer";
+
+
+// Function for Calculating Percentages from a design
+// usage ...
+// .wrapper{width: cp(960,1024);}
+// outputs: . wrapper{width:93.75%;)
+@function cp($target, $container) {
+    @return ($target / $container) * 100%;
+}
+
+@mixin wm($target, $container)
+{
+    width: cp($target, $container);
+    margin-left: margins-left-right($target, $container);
+    margin-right: margins-left-right($target, $container);
+}
+@function margins-left-right($target, $container) {
+    @return (((100-(($target / $container)*100)))/2)*1%;
+}
+
+
+// New base64 background image mixin. Seems to work regardless of browser 'supports inline'.
+// Requires compass and is relative to the image directory defined in config.rb
+@mixin background-image($img){
+    background-image: #{inline_image($img)};
+}
+
+
+@mixin clearfix{
+// Clearfix: contain floats
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    `contenteditable` attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that receive the `clearfix` class.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+    &:before,
+    &:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    &:after {
+        clear: both;
+    }
+
+
+// For IE 6/7 only
+// Include this rule to trigger hasLayout and contain floats.
+   *zoom: 1;
+
+}
+
+
+
+
+@mixin clearer {
+    clear: both;
+    line-height: 0;
+    height: 0;
+}
+
+@mixin hozvertcent($width, $height){
+    position:    absolute;
+    width:         $width;
+    height:     $height;
+    left:         50%;
+    top:         50%;
+    margin-left:0px - ($width / 2);
+    margin-top: 0px - ($height / 2);
+}
+@mixin hozcent($width){
+    position:    absolute;
+    width:         $width;
+    left:         50%;
+    margin-left:0px - ($width / 2);
+}
+@mixin vertcent($height){
+    position:    absolute;
+    height:     $height;
+    top:         50%;
+    margin-top: 0px - ($height / 2);
+}
+
+
+//
+//
+// CROSS BROWSER FIXES
+// If statements are included
+//
+//
+
+
+// to include before a css3 gradient ( for eg @include linear-gradient ) as a fallback for all browsers (not just ie)
+// could be used as background-image, background-color etc
+@mixin fallback($style, $background-type: background ) {
+    @if $vendor == no-prefix{
+        $background-type:  $style;
+    }
+}
+
+// Link to empty gif to fix IE not registering pointer events on background-less elements
+// Is there a better way to do this?
+@mixin iehovbg {
+    @if $vendor == ms and $version < 9 {
+        background: url('../images/e.gif');
+    }
+}
+
+// Call instead of "display: inline-block;" to get it working in IE7 too.
+@mixin inline-block {
+    @if $vendor == ms and $version < 8 {
+        display: inline;
+        zoom: 1;
+    } @else if $vendor == no-prefix {
+        display: inline-block;
+    }
+}
+
+// Fix for PNGs with alpha having a black aliased halo in IE7 when animating
+@mixin ie7pnga {
+    @if $vendor == ms and $version < 8 {
+        background: transparent;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF, endColorstr=#00FFFFFF);
+        zoom: 1;
+    }
+}
+
+// Fix for quirk in webkit where fonts switch between sub-pixel and greyscale anti-aliased
+// when using transitions or js animations. (webkit can't animate the default sub-pixel
+// rendering style). This forces the use of greyscale anti-aliased all the time.
+@mixin webkit-artifacts {
+    @if $vendor == webkit {
+        -webkit-font-smoothing: antialiased;
+        -webkit-transform: translate3d(0,0,0);
+    }
+}
+
+
+// is not supported by ie7
+@mixin border-box($important:null){
+    @if $vendor == webkit {
+        -webkit-box-sizing: border-box $important;
+    }
+    @if $vendor == moz {
+        -moz-box-sizing	: border-box $important;
+    }
+    @if $vendor == ms and $version == 7 {
+       //
+    }@else if $vendor == no-prefix {
+        box-sizing		: border-box $important;
+    }
+}
+
+@mixin image($img, $color: transparent, $repeat: no-repeat, $pos: 0 0){
+    @if $supports_inline == 1 {
+        background: $color inline-image("../images/#{$img}") $repeat $pos;
+    }
+    @else if $supports_inline == 0 {
+        background: $color url("../images/#{$img}") $repeat $pos;
+    }
+}
+
+
+//
+//
+// CSS3
+//
+//
+
+@mixin border-radius($radius: 25px){
+    @if $vendor == moz{
+        -moz-border-radius: $radius;
+    }
+    @else if $vendor == webkit{
+        -webkit-border-radius: $radius;
+    }
+    @if $vendor == ms and $version < 9 {
+        //
+    }@else if $vendor == no-prefix {
+        border-radius: $radius;
+    }
+}
+@mixin multi-border-radius($tl, $tr, $br, $bl) {
+    @if $vendor == moz{
+        -moz-border-radius-topleft: $tl;
+        -moz-border-radius-topright: $tr;
+        -moz-border-radius-bottomright: $br;
+        -moz-border-radius-bottomleft: $bl;
+    }
+    @else if $vendor == webkit{
+        -webkit-border-top-left-radius: $tl;
+        -webkit-border-top-right-radius: $tr;
+        -webkit-border-bottom-right-radius: $br;
+        -webkit-border-bottom-left-radius: $bl;
+    }
+    @if $vendor == ms and $version < 9 {
+        //
+    }@else if $vendor == no-prefix {
+        border-radius: $tl $tr $br $bl;
+    }
+}
+
+@mixin simple-transition($property, $duration, $ease: cubic-bezier(0.165, 0.840, 0.440, 1.000), $delay: 0ms){
+    @if $vendor == moz{
+        @if $property == transform{
+            -moz-transition: -moz-transform $duration $ease;
+            @if $delay != 0ms {
+                -moz-transition-delay: $delay;
+            }
+        }@else{
+            -moz-transition: $property $duration $ease;
+            @if $delay != 0ms {
+                -moz-transition-delay: $delay;
+            }
+        }
+    }
+    @else if $vendor == webkit{
+        @if $property == transform{
+            -webkit-transition: -webkit-transform $duration $ease;
+            @if $delay != 0ms {
+                -webkit-transition-delay: $delay;
+            }
+        }@else{
+            -webkit-transition: $property $duration $ease;
+            @if $delay != 0ms{
+                -webkit-transition-delay: $delay;
+            }
+        }
+    }
+    @else if $vendor == o {
+        @if $property == transform{
+            -o-transition: -o-transform $duration $ease;
+            @if $delay != 0ms {
+                -o-transition-delay: $delay;
+            }
+        }@else{
+            -o-transition: $property $duration $ease;
+            @if $delay != 0ms{
+                -o-transition-delay: $delay;
+            }
+        }
+    }
+    @if $vendor == ms or $version < 10 {
+        //
+    }@else if $vendor == no-prefix {
+        transition: $property $duration $ease;
+        @if $delay != 0ms{
+            transition-delay: $delay;
+        }
+    }
+}
+
+@mixin multiproperty-transition($duration, $property1, $property2:null, $property3:null, $property4:null, $property5:null, $property6:null, $property7:null, $property8:null, $property9:null, $property10:null ){
+    @if $vendor == moz{
+        -moz-transition-duration: $duration;
+        -moz-transition-property: $property1, $property2, $property3, $property4, $property5, $property6, $property7, $property8, $property9, $property10;
+    }
+    @else if $vendor == webkit{
+        -webkit-transition-duration: $duration;
+        -webkit-transition-property: $property1, $property2, $property3, $property4, $property5, $property6, $property7, $property8, $property9, $property10;
+    }
+    @else if $vendor == o{
+        -o-transition-duration: $duration;
+        -o-transition-property: $property1, $property2, $property3, $property4, $property5, $property6, $property7, $property8, $property9, $property10;
+    }
+    @if $vendor == ms or $version < 10 {
+    //
+    }@else if $vendor == no-prefix {
+        transition-duration: $duration;
+        transition-property: $property1, $property2, $property3, $property4, $property5, $property6, $property7, $property8, $property9, $property10;
+    }
+}
+
+//
+//
+// Transformations
+//
+//
+@mixin transform-origin($origin-x, $origin-y, $origin-z){
+    @if $vendor == moz{
+        -moz-transform-origin: $origin-x $origin-y;
+        -moz-transform-origin-y: $origin-y;
+    }
+    @else if $vendor == webkit{
+        -webkit-transform-origin: $origin-x $origin-y;
+        -webkit-transform-origin-y: $origin-y;
+    }
+    @else if $vendor == o{
+        -o-transform-origin: $origin-x $origin-y;
+    }
+    @else if $vendor == ms and $version == 9 {
+        -ms-transform-origin: $origin-x $origin-y;
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        transform-origin: $origin-x $origin-y;
+        transform-origin-y: $origin-y;
+    }
+}
+
+@mixin scale($size, $transform-origin-x: 50%, $transform-origin-y: 50%, $transform-origin-z: 50%){
+    @if($transform-origin-x != null){
+        @include transform-origin($transform-origin-x, $transform-origin-y, $transform-origin-z)
+    }
+    @if $vendor == moz{
+        -moz-transform: scale3d($size, $size, 1);
+    }
+    @else if $vendor == webkit{
+        -webkit-transform: scale3d($size, $size, 1);
+    }
+    @else if $vendor == o{
+        -o-transform: scale($size);
+    }
+    @else if $vendor == ms and $version < 10 {
+        @if $version < 9 {
+        // TODO: calc a matrix
+        }
+        @else {
+            -ms-transform: scale($size, $size);
+        }
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        transform: scale($size, $size);
+    }
+}
+@mixin translate($transX, $transY, $transform-origin-x: 50%, $transform-origin-y: 50%, $transform-origin-z: 50%){
+    @if($transform-origin-x != null) {
+        @include transform-origin($transform-origin-x, $transform-origin-y, $transform-origin-z)
+    }
+
+    @if $vendor == moz{
+        -moz-transform: translate3d($transX, $transY, 0);
+    }
+    @else if $vendor == webkit{
+        -webkit-transform: translate3d($transX, $transY, 0);
+    }
+    @else if $vendor == o{
+        -o-transform: translate($transX, $transY);
+    }
+    @else if $vendor == ms and $version < 10 {
+        @if $version < 9 {
+        // TODO: calc a matrix
+        }
+        @else{
+            -ms-transform: translate($transX, $transY);
+        }
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        transform: translate($transX, $transY);
+    }
+}
+@mixin rotate($rotation, $transform-origin-x: 50%, $transform-origin-y: 50%, $transform-origin-z: 50%) {
+    @if($transform-origin-x != null){
+        @include transform-origin($transform-origin-x, $transform-origin-y, $transform-origin-z)
+    }
+
+    $degs: unquote("#{$rotation}deg");
+
+    @if $vendor == moz{
+        -moz-transform: rotate($degs);
+    }
+    @else if $vendor == webkit{
+    //scale3d to force 3d rendering to aliase it
+        -webkit-transform: rotate($degs) scale3d(1,1,1);
+    }
+    @else if $vendor == o{
+        -o-transform: rotate($rotation);
+    }
+    @else if $vendor == ms and $version < 10 {
+        @if $version < 9 {
+            filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($rotation)}, M12=-#{sin($rotation)}, M21=#{sin($rotation)}, M22=#{cos($rotation)});
+            -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($rotation)}, M12=-#{sin($rotation)}, M21=#{sin($rotation)}, M22=#{cos($rotation)})";
+        }
+        @else{
+            -ms-transform: rotate($rotation);
+        }
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        transform: rotate($rotation);
+    }
+}
+@mixin rotation($rotation, $transform-origin-x: 50%, $transform-origin-y: 50%, $transform-origin-z: 50%){
+    @include rotate($rotation, $transform-origin-x, $transform-origin-y, $transform-origin-z);
+}
+
+@mixin skew($skewX, $skewY, $transform-origin-x: 50%, $transform-origin-y: 50%, $transform-origin-z: 50%){
+    @if($transform-origin-x != null){
+        @include transform-origin($transform-origin-x, $transform-origin-y, $transform-origin-z)
+    }
+
+    @if $vendor == moz{
+        -moz-transform: skewX($skewX) skewY($skewY);
+    }
+    @else if $vendor == webkit{
+        -webkit-transform: skewX($skewX) skewY($skewY);
+    }
+    @else if $vendor == o{
+        -o-transform: skewX($skewX) skewY($skewY);
+    }
+    @else if $vendor == ms and $version < 10 {
+        @if $version < 9 {
+        // TODO: calc a matrix
+        }
+        @else{
+            -ms-transform: skewX($skewX) skewY($skewY);
+        }
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        transform: skewX($skewX) skewY($skewY);
+    }
+}
+
+@mixin linear-gradient($start-color, $end-color, $direction: top, $important: ()) {
+    @if $vendor == moz {
+        background: -moz-linear-gradient($direction, $start-color, $end-color) $important;
+    } @else if $vendor == webkit {
+        background: -webkit-linear-gradient($direction, $start-color, $end-color) $important;
+    } @else if $vendor == o {
+        background: -o-linear-gradient($direction, $start-color, $end-color) $important;
+    } @else if $vendor == ms and $version < 10 {
+        @if $version < 10 {
+            $ie-start-color: ie_hex_str($start-color);
+            $ie-end-color: ie_hex_str($end-color);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#{$ie-start-color}, endColorStr=#{$ie-end-color});
+        }
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        @if $direction == top {
+            background: linear-gradient(to bottom, $start-color, $end-color) $important;
+        } @else if $direction == bottom {
+            background: linear-gradient(to top, $start-color, $end-color) $important;
+        } @else if $direction == left {
+            background: linear-gradient(to right, $start-color, $end-color) $important;
+        } @else if $direction == right {
+            background: linear-gradient(to left, $start-color, $end-color) $important;
+        }
+    }
+}
+@mixin linear-gradient-hover($start-color, $end-color, $direction: top, $important: ()) {
+    @if $vendor == moz {
+        background: -moz-linear-gradient($direction, $start-color, $end-color) $important;
+    } @else if $vendor == webkit {
+        background: -webkit-linear-gradient($direction, $start-color, $end-color) $important;
+    } @else if $vendor == o {
+        background: -o-linear-gradient($direction, $start-color, $end-color) $important;
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        @if $direction == top {
+            background: linear-gradient(to bottom, $start-color, $end-color) $important;
+        } @else if $direction == bottom {
+            background: linear-gradient(to top, $start-color, $end-color) $important;
+        } @else if $direction == left {
+            background: linear-gradient(to right, $start-color, $end-color) $important;
+        } @else if $direction == right {
+            background: linear-gradient(to left, $start-color, $end-color) $important;
+        }
+    }
+}
+
+@mixin linear-gradient-stop($start-color, $start-position, $end-color, $end-position, $direction: top, $important: ()){
+    @if $vendor == moz{
+        background: -moz-linear-gradient($direction, $start-color $start-position, $end-color $end-position) $important;
+    } @else if $vendor == webkit{
+        background: -webkit-linear-gradient($direction, $start-color $start-position, $end-color $end-position) $important;
+    } @else if $vendor == o{
+        background: -o-linear-gradient($direction, $start-color $start-position, $end-color $end-position) $important;
+    } @else if $vendor == ms and $version == 9 {
+        background: -ms-linear-gradient($direction, $start-color $start-position, $end-color $end-position) $important;
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        @if $direction == top {
+            background: linear-gradient(to bottom, $start-color $start-position, $end-color $end-position) $important;
+        } @else if $direction == bottom {
+            background: linear-gradient(to top, $start-color $start-position, $end-color $end-position) $important;
+        } @else if $direction == left {
+            background: linear-gradient(to right, $start-color $start-position, $end-color $end-position) $important;
+        } @else if $direction == right {
+            background: linear-gradient(to left, $start-color $start-position, $end-color $end-position) $important;
+        }
+    }
+}
+
+@mixin linear-gradient-4color($color1, $pos1, $color2, $pos2, $color3, $pos3, $color4, $pos4, $direction: top, $direction2: top, $important: ()){
+    @if $vendor == moz{
+        background: -moz-linear-gradient($direction, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+    } @else if $vendor == webkit{
+        background: -webkit-linear-gradient($direction, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+    } @else if $vendor == o{
+        background: -o-linear-gradient($direction, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+    } @else if $vendor == ms and $version == 9 {
+        background: -ms-linear-gradient($direction, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        @if $direction == top {
+            background: linear-gradient(to bottom, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+        } @else if $direction == bottom {
+            background: linear-gradient(to top, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+        } @else if $direction == left {
+            background: linear-gradient(to right, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+        } @else if $direction == right {
+            background: linear-gradient(to left, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+        }@else {
+            background: linear-gradient($direction2, $color1 $pos1, $color2 $pos2, $color3 $pos3, $color4 $pos4) $important;
+        }
+    }
+}
+
+//  Does not support ie7, ie8, ie9 so please add a fallback image.
+@mixin linear-gradient-with-image($url, $start-color, $start-position, $end-color, $end-position, $direction: top, $important: ()){
+    @if $vendor == moz{
+        background: $url, -moz-linear-gradient($direction, $start-color $start-position, $end-color $end-position) $important;
+    } @else if $vendor == webkit{
+        background: $url, -webkit-linear-gradient($direction, $start-color $start-position, $end-color $end-position) $important;
+    } @else if $vendor == o{
+        background: $url, -o-linear-gradient($direction, $start-color $start-position, $end-color $end-position) $important;
+    }
+    @if $vendor == ms and $version < 9 {
+    //
+    }@else if $vendor == no-prefix {
+        @if $direction == top {
+            background: $url, linear-gradient(to bottom, $start-color $start-position, $end-color $end-position) $important;
+        } @else if $direction == bottom {
+            background: $url, linear-gradient(to top, $start-color $start-position, $end-color $end-position) $important;
+        } @else if $direction == left {
+            background: $url, linear-gradient(to right, $start-color $start-position, $end-color $end-position) $important;
+        } @else if $direction == right {
+            background: $url, linear-gradient(to left, $start-color $start-position, $end-color $end-position) $important;
+        }
+    }
+}
+
+@mixin opacity($perc){
+    @if $vendor == ms and $version < 9 {
+        filter: alpha(opacity=$perc);
+    }
+    @else if $vendor == no-prefix{
+        opacity: $perc / 100;
+    }
+}
+@mixin semitransparent($r, $g, $b, $a) {
+    @if $vendor == ms and $version < 9{
+        background: transparent;
+        $ie-color: ie-hex-str(rgba($r, $g, $b, $a));
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#{$ie-color}, endColorStr=#{$ie-color});
+        zoom: 1;
+    }
+    @else if $vendor == no-prefix{
+        background-color: rgba($r, $g, $b, $a);
+    }
+}
+
+@mixin csscolumns($columncount, $columngap: 0px) {
+    @if $vendor == moz{
+        -moz-column-count: $columncount;
+        -moz-column-gap:     $columngap;
+    }
+    @else if $vendor == webkit{
+        -webkit-column-count:    $columncount;
+        -webkit-column-gap:    $columngap;
+    }
+    @else if $vendor == o{
+        -o-column-count:     $columncount;
+        -o-column-gap:     $columngap;
+
+    }
+    @else if $vendor == ms and $version < 10 {
+        -ms-column-count:    $columncount;
+        -ms-column-gap:    $columngap;
+    }
+    @if $vendor == no-prefix {
+        column-count: $columncount;
+        column-gap: $columngap;
+    }
+}
+
+@mixin box-shadow($shadow1, $shadow2:null, $shadow3:null, $shadow4:null){
+    @if $vendor == moz{
+        -moz-box-shadow: $shadow1, $shadow2, $shadow3, $shadow4;
+    }
+    @else if $vendor == webkit{
+        -webkit-box-shadow: $shadow1, $shadow2, $shadow3, $shadow4;
+    }
+    @else if $vendor == o{
+        -o-box-shadow: $shadow1, $shadow2, $shadow3, $shadow4;
+    }
+    @else if $vendor == ms and $version < 10 {
+        -ms-box-shadow: $shadow1, $shadow2, $shadow3, $shadow4;
+    }
+    @if $vendor == no-prefix {
+        box-shadow: $shadow1, $shadow2, $shadow3, $shadow4;
+    }
+}
+
+
+
+
+@mixin radial-gradient($direction, $shape, $cover,  $start-color, $end-color){
+    @if $vendor == moz{
+        background: -moz-radial-gradient($direction, $shape $cover, $start-color, $end-color);
+    }
+    @else if $vendor == webkit{
+        background: -webkit-radial-gradient($direction, $shape $cover, $start-color, $end-color);
+    }
+    @else if $vendor == o{
+        background: -o-radial-gradient($direction, $shape $cover, $start-color, $end-color);
+    }
+
+    @if $vendor == ms and $version < 10 {
+        //
+    }@else if $vendor == no-prefix {
+        background: radial-gradient($direction, $shape $cover, $start-color, $end-color);
+        background: radial-gradient($shape at $direction, $start-color, $end-color);
+    }
+}
+
+@mixin radial-gradient-three($directionW3C, $directionMiddle, $shape, $cover, $color1, $color2, $color3 ){
+    @if $vendor == moz{
+        background: -moz-radial-gradient($directionMiddle, $shape $cover, $color1, $color2, $color3 );
+    }
+    @else if $vendor == webkit{
+        background: -webkit-radial-gradient($directionMiddle, $shape $cover, $color1, $color2, $color3 );
+    }
+    @else if $vendor == o{
+        background: -o-radial-gradient($directionMiddle, $shape $cover, $color1, $color2, $color3 );
+    }
+
+    @if $vendor == ms and $version < 10 {
+       //
+    }@else if $vendor == no-prefix{
+        background: radial-gradient($directionMiddle, $shape $cover, $color1, $color2, $color3 );
+        background: radial-gradient($shape at $directionW3C, $color1, $color2, $color3 );
+    }
+}
+
+// CSS Triangle
+@mixin triangle($size, $direction: up, $color: #000, $ratio: 1) {
+    $tri-size: $size;
+
+    width: 0;
+    height: 0;
+
+    @if $direction == down {
+        border-left: $tri-size*$ratio solid transparent;
+        border-right: $tri-size*$ratio solid transparent;
+
+        border-top: $tri-size solid $color;
+    }
+    @else if $direction == left {
+        border-top: $tri-size solid transparent;
+        border-bottom: $tri-size solid transparent;
+
+        border-right: $tri-size * $ratio solid $color;
+    }
+    @else if $direction == right {
+        border-top: $tri-size solid transparent;
+        border-bottom: $tri-size solid transparent;
+
+        border-left: $tri-size*$ratio solid $color;
+    }
+    @else { // direction == up
+    // Up arrows were slightly smaller in IE. Not sure if this applies to all contexts.
+        @if $vendor == ms and $version < 9 {
+            $tri-size: $tri-size + 1;
+            margin-left: -1px;
+        }
+        border-left: $tri-size * $ratio solid transparent;
+        border-right: $tri-size * $ratio solid transparent;
+
+        border-bottom: $tri-size solid $color;
+    }
+}
+
+// filter Blur ==========
+@mixin blur($size: 3px){
+    @if $vendor == moz{
+        -moz-filter: blur($size);
+    }
+    @else if $vendor == webkit{
+        -webkit-filter: blur($size);
+    }
+    @else if $vendor == o{
+        -o-filter: blur($size);
+    }
+
+    @if $vendor == ms and $version < 10 {
+    // not supported
+    }
+    @else if $vendor == no-prefix {
+        filter: blur($size);
+    }
+}
+
+
+
+// CSS3 Penner Easing Approximations
+// Sourced from http://matthewlein.com/ceaser/
+
+$easeInQuad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$easeInOutQuad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+$easeInCubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+$easeInQuart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+$easeInQuint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$easeInOutQuint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+
+$easeInSine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+
+$easeInExpo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$easeOutExpo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
+$easeInCirc: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$easeOutCirc: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+
+$easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+$easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+
+
+
+
+

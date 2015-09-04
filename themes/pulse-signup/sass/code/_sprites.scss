@@ -1,0 +1,144 @@
+// Do not use the $touch statement in this file
+
+@if $breakpoint == small {
+  /* forms small */
+  // !!mobile nav
+  .brand {
+    @include sprite(logo);
+    }
+
+  //buttons
+  .reset {
+    @include sprite(reset);
+    }
+
+  .signup {
+    @include sprite(signup);
+    }
+
+  .continue {
+    @include sprite(continue);
+    }
+  .continue-back {
+    @include sprite(continue-back);
+    }
+
+  //Optionset Radio buttons
+  input.radio {
+    & ~ label .rb {
+      @include sprite(rb1);
+      }
+    &:checked ~ label .rb {
+      @include sprite(rb3);
+      }
+    }
+
+  //Optionset Radio buttons
+  .checkboxset input[type=checkbox] {
+    & ~ label .cb {
+      @include sprite(cb1);
+      }
+    &:checked ~ label .cb {
+      @include sprite(cb3);
+      }
+    }
+
+  //DDL
+
+  .ddl-arrow {
+    @include sprite(ddl-arrow);
+    }
+
+  .bar {
+    @include sprite(scrollbar);
+    }
+
+  //Search control
+
+  .search {
+    @include sprite(search);
+    }
+
+  .search-cancel {
+    @include sprite(cancel2);
+    }
+
+  //Helpful tip
+  .questionIcon {
+    @include sprite(tip);
+    }
+
+  .Sign_up_BuildYourPlan {
+    @include sprite(green-lamp);
+    }
+  .ui-tabs-active .Sign_up_BuildYourPlan {
+    @include sprite(lamp);
+    }
+
+  .Sign_up_summary {
+    @include sprite(green-payment);
+    }
+  .ui-tabs-active .Sign_up_summary {
+    @include sprite(payment);
+    }
+
+  .Sign_up_applicationform {
+    @include sprite(green-clipboard);
+    }
+  .ui-tabs-active .Sign_up_applicationform {
+    @include sprite(clipboard);
+    }
+
+  .pylon {
+    @include sprite(pylon);
+    }
+  .thumbsup {
+    @include sprite(thumbsup);
+    }
+  .rightArrow {
+    @include sprite(right-arrow);
+    }
+  .info {
+    @include sprite(info);
+    }
+
+  @media screen and (max-width: 568px) {
+    .Sign_up_BuildYourPlan {
+      @include sprite(green-lamp-m);
+      }
+    .ui-tabs-active .Sign_up_BuildYourPlan {
+      @include sprite(lamp-m);
+      }
+
+    .Sign_up_summary {
+      @include sprite(green-payment-m);
+      }
+    .ui-tabs-active  .Sign_up_summary {
+      @include sprite(payment-m);
+      }
+
+    .Sign_up_applicationform {
+      @include sprite(green-clipboard-m);
+      }
+    .ui-tabs-active .Sign_up_applicationform {
+      @include sprite(clipboard-m);
+      }
+    .info {
+      display:none;
+      }
+
+    }
+
+  .hoverRow a {
+    @include sprite(edit);
+    }
+
+  }
+// end breakpoint small ====================
+
+@if $breakpoint == large {
+  /* forms large */
+  }
+// end breakpoint large ====================
+
+

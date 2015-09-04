@@ -1,0 +1,364 @@
+// $input-border-size: 		1px;
+// $input-padding-left-right:  10px;
+
+// $input-background-color:    #eee;
+// $input-border-color:        #999;
+// $input-border-color-focus:  #06f;
+
+// // error state colors
+// $input-border-color-error:  #c00;
+// $error-color:               #c00;
+
+// // checkbox and radio button
+// $checkbox-gutter: 	35px;
+// $radio-gutter: 		35px;
+// $checkboxset-gutter:   $checkbox-gutter;
+
+@if $breakpoint == small {
+
+  #SignUpForm {
+    @include clearfix;
+    }
+
+  .field ul {
+    margin-top: 0;
+    }
+
+  form, fieldset {
+    width: 100%;
+    margin: 0 auto;
+    }
+  fieldset {
+    float: left;
+    }
+
+  input.text,
+  textarea {
+    border: 1px solid #C0C0C0;
+    margin: 0;
+    padding: 9px 10px 9px 10px;
+    width: 100%;
+
+    &:focus {
+      outline: 0;
+      outline: none;
+      border: 1px solid #17607F;
+      }
+    }
+
+  textarea {
+    resize: vertical; // forces text area to be resized vertically only
+    }
+
+  // !!VALIDATION =========================
+  input.text.error {
+    border: 1px solid #f00;
+    }
+  label.error,
+  .application label.error,
+  form .notFound label.error {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #f00;
+    font-size: 14px;
+    font-style: italic;
+    display: block;
+    margin-top: 5px;
+    float: left;
+    clear: both;
+    }
+  .application {
+    textarea.error,
+    input.text.error {
+      margin-bottom: 20px;
+      }
+    label.error {
+      position: absolute;
+      bottom: 0;
+      //left:			18.75%;
+      }
+    .middleColumn {
+      position: relative; // for the label.error
+
+      li {
+        position: relative; // for the label.error
+
+        label.error {
+          white-space: nowrap;
+          margin-left: -35px;
+          }
+
+        input.error + label + label {
+          padding-bottom: 20px;
+          }
+        }
+      }
+    }
+
+  // APPLICATION - FINAL FORM =========================
+  .application {
+
+    &.section {
+      background: none;
+      }
+    > div {
+      display: table;
+
+      > label {
+        width: cp(180, 960);
+        margin: 0;
+        padding: 0; //5px 0 4px;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        display: none;
+        //@border-box;
+
+        &:first-child {
+          display: table-cell;
+          vertical-align: middle;
+          }
+        }
+      }
+    .field {
+      margin: 4px 0;
+      padding: 3px 0;
+      float: left;
+      width: 100%;
+      clear: both;
+
+      &:hover {
+        background: #F5F6F8;
+        }
+      }
+    .input60, .input80, .input310, .input350, .input460, .input720 {
+      float: left;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      //@border-box
+      }
+    .input60 {
+      //width:          cp(80,780); //780 = 960 - 180 (180 = label width, table-cell)
+      width: 80px;
+      }
+    .input80 {
+      //width:          cp(100,780);
+      width: 100px;
+      }
+    .input310 {
+      width: cp(330, 780);
+      }
+    .input350 {
+      width: cp(370, 780);
+      }
+    .input460 {
+      width: cp(480, 780);
+      }
+    .input720 {
+      width: cp(740, 780);
+      }
+
+    .ddl {
+      margin-top: 0;
+      float: left;
+      width: 100%;
+      }
+    input.text,
+    textarea {
+      float: left;
+      width: 100%;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      }
+
+    .textLink {
+      display: none;
+      }
+
+    h2, p {
+      margin-left: 20px;
+      }
+
+    .optionset.checkboxset {
+      margin-top: 8px;
+
+      input {
+        left: -20px;
+        top: 2px;
+        }
+      }
+    }
+  .install-address,
+  .postal-address {
+
+    .input460 {
+      margin-bottom: 14px;
+      width: 61.5%;
+
+      &:last-child {
+        margin-bottom: 0;
+        }
+      }
+    }
+
+  .dln5a, .dlv5b {
+    margin-bottom: 14px;
+    &:last-child {
+      margin-bottom: 0;
+      }
+    }
+  // #field_Application_PhysicalAddress {
+  //     display: none;
+  // }
+
+  .application > div.textarea {
+
+    > label:first-child {
+      float: left;
+      margin-top: 10px;
+      }
+    .input460 {
+      width: cp(480, 780);
+      }
+    }
+
+  // SCHOOL NOT FOUND FORM
+
+  .notFound {
+    padding: 20px 18px;
+
+    div > div > label {
+      width: cp(160, 960);
+      float: left;
+      margin: 0;
+      padding: 5px 0 4px;
+      border-right: 20px solid transparent;
+      }
+
+    input.text {
+      width: cp(330, 900);
+      }
+
+    .optionset ul {
+      width: cp(480, 900);
+      }
+
+    .fieldgroup-field {
+      margin: 8px 0;
+      padding: 3px 0;
+      float: left;
+      width: 100%;
+      clear: both;
+
+      // &:hover{
+      //     background: pink;
+      // }
+      }
+
+    /* line 34, ../sass/code/_optionset-radio.scss */
+    ul.optionset li {
+      position: relative;
+      border-left: 35px solid transparent;
+      position: relative;
+      float: left;
+      margin-right: 10px;
+      }
+
+    p {
+      margin: 0 0 6px;
+      }
+
+    .btn {
+      margin-top: 4px;
+      }
+    }
+
+  .submitMessage {
+    padding: 20px 16px 23px;
+
+    p { margin: 0; }
+
+    }
+
+  .application {
+    > div {
+      display: table;
+
+      > label:first-child {
+        display: table-cell;
+        vertical-align: middle;
+        float: none;
+        }
+      }
+    }
+
+  @include media(3, max) {
+
+    .application .input310 {
+      width: 40%;
+      }
+    }
+
+  @include media(2, max) {
+    /* application form */
+    .application > div > label:first-child {
+      width: 100%;
+      display: block;
+      border: none;
+      padding-left: 3.5px;
+      padding-right: 3.5px;
+      padding-top: 10px;
+      }
+    .application .input60,
+    .application .input80,
+    .application .input310,
+    .application .input350,
+    .application .input460,
+    .application .input720 {
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      width: 100%;
+      }
+    #Date_of_Birth .middleColumn {
+      width: 33.3333%;
+      }
+
+    .application .middleColumn {
+      padding-top: 6px;
+      }
+    #Postal_Address label,
+    #Physical_Address label {
+      margin-top: 0;
+      display: none;
+      &:first-child {
+        display: block;
+        }
+      }
+    #field_Application_PostalAddress .input460,
+    #field_Application_PhysicalAddress .input460 {
+      margin-bottom: 0;
+      width: 100%;
+      }
+
+    .notFound input.text {
+      width: 100%;
+      }
+    /* line 217, ../sass/code/_forms.scss */
+    .notFound .optionset ul {
+      width: 100%;
+      }
+
+    .application {
+      h2, p {
+        margin-left: 8px;
+        }
+      }
+
+    }
+
+  }
+// end breakpoint small ====================
+
+@if $breakpoint == large {
+  /* forms large */
+  }
+// end breakpoint large ====================

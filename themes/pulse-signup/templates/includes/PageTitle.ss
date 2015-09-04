@@ -1,0 +1,1 @@
+<% if MetaTitle %>$MetaTitle<% else %>$Title<% end_if %><% if Parent && Parent.Title != Home %> &lt; <% with Parent %><% include PageTitle %><% end_with %><% end_if %>

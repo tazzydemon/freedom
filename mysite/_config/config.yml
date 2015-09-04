@@ -1,0 +1,32 @@
+---
+Name: mysite
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+# YAML configuration for SilverStripe
+# See http://doc.silverstripe.org/framework/en/topics/configuration
+# Caution: Indentation through two spaces, not tabs
+SSViewer:
+  theme: 'pulse-signup'
+
+SiteConfig:
+  extensions:
+    - CustomSiteConfig
+---
+Only:
+  environment: 'live'
+---
+SignUp:
+  signupemail: 'data.admin@pulseenergy.co.nz'
+  failemail: 'abandon.pulse@pulse.local'
+  recoveryemail: 'abandon.pulse@pulse.local'
+---
+Only:
+  environment: 'dev'
+---
+SignUp:
+  signupemail: 'julian@bitstream.co.nz'
+  failemail: 'julian@bitstream.co.nz'
+  recoveryemail: 'julian@bitstream.co.nz'
+---

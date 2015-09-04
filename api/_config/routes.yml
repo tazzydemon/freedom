@@ -1,0 +1,9 @@
+---
+Name: pulseapiroutes
+After:
+  - '#rootroutes'
+  - '#modelascontrollerroutes'
+---
+Director:
+  rules:
+   'api': 'PulseAPI'

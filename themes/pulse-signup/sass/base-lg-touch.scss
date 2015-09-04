@@ -1,0 +1,10 @@
+@import "code/functions/_functions.scss";
+
+$breakpoint:	large;
+$version: 		0;
+$vendor :       no-prefix;
+$touch :        true;
+ 
+// _RESET.scss is inherited through the base-sm-touch.scss
+@import "code/_base";
+
