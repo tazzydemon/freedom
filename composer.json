@@ -2,7 +2,7 @@
     "name": "tazzydemon/freedom",
     "description": "Freedom Installer",
     "require": {
-        "mnsami/composer-custom-directory-installer": "1.0.*",
+        "mnsami/composer-custom-directory-installer": "1.0.*"
     },
     "authors": [
         {
