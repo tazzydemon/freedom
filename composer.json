@@ -17,6 +17,6 @@
     ],
     "minimum-stability": "dev",
     "config": {
-        "vendor-dir": "hell"
+        "vendor-dir": ""
     }
 }
