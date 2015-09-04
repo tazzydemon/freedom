@@ -1,5 +1,5 @@
 {
-    "name": "silverstripe/framework",
+    "name": "tazzydemon/freedom",
     "description": "Freedom Installer",
     "require": {
         "silverstripe/cms": "3.2",
